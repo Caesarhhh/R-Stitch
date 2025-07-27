@@ -130,10 +130,24 @@
   </div>
 </section>
 
+<section class="section hero is-light" style="max-width: 80%; margin: 0 auto;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Chain-of-thought (CoT) reasoning enhances the problem-solving capabilities of large language models by encouraging step-by-step intermediate reasoning during inference. While effective, CoT introduces substantial computational overhead due to its reliance on autoregressive decoding over long token sequences. Existing acceleration strategies either reduce sequence length through early stopping or compressive reward designs, or improve decoding speed via speculative decoding with smaller models. However, speculative decoding suffers from limited speedup when the agreement between small and large models is low, and fails to exploit the potential advantages of small models in producing concise intermediate reasoning. In this paper, we present R-Stitch, a token-level, confidence-based hybrid decoding framework that accelerates CoT inference by switching between a small language model (SLM) and a large language model (LLM) along the reasoning trajectory. R-Stitch uses the SLM to generate tokens by default and delegates to the LLM only when the SLM's confidence falls below a threshold. This design avoids full-sequence rollback and selectively invokes the LLM on uncertain steps, preserving both efficiency and answer quality. R-Stitch is model-agnostic, training-free, and compatible with standard decoding pipelines. Experiments on math reasoning benchmarks demonstrate that R-Stitch achieves up to 85\% reduction in inference latency with negligible accuracy drop, highlighting its practical effectiveness in accelerating CoT reasoning.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- End image carousel -->
 <!-- Video carousel -->
-<section class="hero is-small">
+<section class="hero is-small" style="max-width: 80%; margin: 0 auto;">
   <div class="hero-body">
     <div class="container">
       <h2 class="title is-3">Token-level Analysis</h2>
@@ -149,7 +163,7 @@
 
 
 <!-- Video carousel -->
-<section class="hero is-small">
+<section class="hero is-small is-light" style="max-width: 80%; margin: 0 auto;">
   <div class="hero-body">
     <div class="container">
       <h2 class="title is-3">Methodology</h2>
@@ -164,18 +178,23 @@
 </section>
 <!-- End video carousel -->
 
-<section class="hero is-small">
+<section class="hero is-small" style="max-width: 80%; margin: 0 auto;">
   <div class="hero-body">
     <div class="container">
       <h2 class="title is-3">Performance</h2>
-      <figure>
-        <img src="static/images/performance.png" alt="Performance">
-      </figure>
+
+      <div class="has-text-centered">
+        <figure class="image is-inline-block">
+          <img src="static/images/performance.png" alt="Performance">
+        </figure>
+      </div>
+
     </div>
   </div>
 </section>
 
-<section class="hero is-small">
+
+<section class="hero is-small is-light" style="max-width: 80%; margin: 0 auto;">
   <div class="hero-body">
     <div class="container content">
       <h2 class="title is-3">Limitations and Future Work</h2>
