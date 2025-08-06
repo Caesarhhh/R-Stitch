@@ -181,7 +181,7 @@
       <h2 class="title is-3">Methodology</h2>
       <div class="has-text-centered">
       <figure class="image is-inline-block">
-        <img src="static/images/cot_methodv2.png" alt="Method illustration"  style="width: 70%;">
+        <img src="static/images/cot_methodv2.png" alt="Method illustration"  style="width: 95%;">
       </figure>
       <figcaption>
         <b>Overview of R-Stitch.</b> Given a question with chain-of-thought (CoT) prompting, decoding alternates between a small language model (SLM) and a large language model (LLM) based on token-level confidence. Generation begins with the SLM. If the predicted token has low confidence, the system switches to the LLM, which overwrites the uncertain token and continues decoding. Conversely, when the LLM produces a high-confidence token, control is handed back to the SLM to reduce computational cost. This bidirectional switching mechanism enables dynamic resource allocation based on confidence, allowing R-Stitch~to retain the efficiency of the SLM while leveraging the reliability of the LLM when necessary.
