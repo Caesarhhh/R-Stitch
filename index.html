@@ -297,21 +297,27 @@
 }
 
 /* 三个状态：只改这里 */
+/* 中间图 */
 .active { 
   opacity: 1 !important; 
   transform: translate(-50%, -50%) scale(1) !important; 
   z-index: 3; 
 }
+
+/* 左边图：往中间靠一些，但仍超出左边 */
 .left { 
   opacity: 0.6 !important; 
-  transform: translate(-115%, -50%) scale(0.85) !important;  /* ✅ 往外推一点点 */
+  transform: translate(-90%, -50%) scale(0.85) !important;  
   z-index: 2; 
 }
+
+/* 右边图：往中间靠一些，但仍超出右边 */
 .right { 
   opacity: 0.6 !important; 
-  transform: translate(15%, -50%) scale(0.85) !important;   /* ✅ 往外推一点点 */
+  transform: translate(-10%, -50%) scale(0.85) !important;  
   z-index: 2; 
 }
+
 
 
 /* 按钮修复点击穿透 */
