@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
   <!-- Replace the content tag with appropriate information -->
   <meta name="description" content="DESCRIPTION META TAG">
-  <meta property="og:title" content="SOCIAL MEDIA TITLE TAG"/>
-  <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG TAG"/>
-  <meta property="og:url" content="URL OF THE WEBSITE"/>
+  <meta property="og:title" content="SOCIAL MEDIA TITLE TAG" />
+  <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG TAG" />
+  <meta property="og:url" content="URL OF THE WEBSITE" />
   <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
   <meta property="og:image" content="static/image/your_banner_image.png" />
-  <meta property="og:image:width" content="1200"/>
-  <meta property="og:image:height" content="630"/>
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
 
 
   <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
@@ -26,15 +27,13 @@
 
   <title>R-Stitch: Dynamic Trajectory Stitching for Efficient Reasoning</title>
   <link rel="icon" type="image/x-icon" href="static/images/efficiency.png">
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-  rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
   <link rel="stylesheet" href="static/css/bulma.min.css">
   <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
   <link rel="stylesheet" href="static/css/bulma-slider.min.css">
   <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-  href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="static/css/index.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -44,471 +43,667 @@
   <script src="static/js/bulma-slider.min.js"></script>
   <script src="static/js/index.js"></script>
 </head>
+
 <body>
 
 
 
 
 
-<!-- Image carousel -->
-<section class="hero">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">R-Stitch: Dynamic Trajectory Stitching for Efficient Reasoning</h1>
-          <div class="is-size-5 publication-authors">
-            <!-- Paper authors -->
-            <span class="author-block">
-              <a href="mailto:caesard216@gmail.com" target="_blank">Zhuokun Chen</a><sup>1*</sup>,
-            </span>
-            <span class="author-block">
-              <a href="#" target="_blank">Zeren Chen</a><sup>2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="#" target="_blank">Jiahao He</a><sup>4</sup>,
-            </span>
-            <span class="author-block">
-              <a href="#" target="_blank">Lu Sheng</a><sup>2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="#" target="_blank">Mingkui Tan</a><sup>3</sup>,
-            </span>
-            <span class="author-block">
-              <a href="#" target="_blank">Jianfei Cai</a><sup>1</sup>,
-            </span>
-            <span class="author-block">
-              <a href="mailto:bohan.zhuang@gmail.com" target="_blank">Bohan Zhuang</a><sup>4†</sup>
-            </span>
-          </div>
-
-          <div class="is-size-5 publication-authors">
-            <span class="author-block">
-              <sup>1</sup> Monash University &nbsp;&nbsp;
-              <sup>2</sup> School of Software, Beihang University &nbsp;&nbsp;
-              <sup>3</sup> South China University of Technology &nbsp;&nbsp;
-              <sup>4</sup> ZIP Lab, Zhejiang University
-            </span>
-            <span class="eql-cntrb"><small>Email: caesard216@gmail.com, bohan.zhuang@gmail.com</small></span>
-          </div>
-
+  <!-- Image carousel -->
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
           <div class="column has-text-centered">
-            <div class="publication-links">
-              <!-- Arxiv PDF link -->
-              <span class="link-block">
-                <a href="https://arxiv.org/abs/2507.17307" target="_blank"
-                  class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                    <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
+            <h1 class="title is-1 publication-title">R-Stitch: Dynamic Trajectory Stitching for Efficient Reasoning</h1>
+            <div class="is-size-5 publication-authors">
+              <!-- Paper authors -->
+              <span class="author-block">
+                <a href="mailto:caesard216@gmail.com" target="_blank">Zhuokun Chen</a><sup>1*</sup>,
               </span>
-              
-
-              <!-- Github link -->
-              <span class="link-block">
-                <a href="https://github.com/Caesarhhh/R_Stitch" target="_blank"
-                  class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                    <i class="fab fa-github"></i>
-                  </span>
-                  <span>Code</span>
-                </a>
+              <span class="author-block">
+                <a href="#" target="_blank">Zeren Chen</a><sup>2</sup>,
               </span>
-              
-              <span class="link-block">
-                <a href="https://scholar.googleusercontent.com/scholar.bib?q=info:L-aXZ6FU0VYJ:scholar.google.com/&output=citation&scisdr=CgIBXavQENivsT6gox0:AAZF9b8AAAAAaIWmux1fNZ6UnwDxaQkLs1214k4&scisig=AAZF9b8AAAAAaIWmuxkLjAKSxtpVwuQin0mfxMw&scisf=4&ct=citation&cd=-1&hl=zh-CN" target="_blank"
-                  class="external-link button is-normal is-rounded is-dark">
-                  <span>BibTex</span>
-                </a>
+              <span class="author-block">
+                <a href="#" target="_blank">Jiahao He</a><sup>4</sup>,
               </span>
-              <!-- ArXiv abstract Link -->
+              <span class="author-block">
+                <a href="#" target="_blank">Lu Sheng</a><sup>2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="#" target="_blank">Mingkui Tan</a><sup>3</sup>,
+              </span>
+              <span class="author-block">
+                <a href="#" target="_blank">Jianfei Cai</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="mailto:bohan.zhuang@gmail.com" target="_blank">Bohan Zhuang</a><sup>4†</sup>
+              </span>
             </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <sup>1</sup> Monash University &nbsp;&nbsp;
+                <sup>2</sup> School of Software, Beihang University &nbsp;&nbsp;
+                <sup>3</sup> South China University of Technology &nbsp;&nbsp;
+                <sup>4</sup> ZIP Lab, Zhejiang University
+              </span>
+              <span class="eql-cntrb"><small>Email: caesard216@gmail.com, bohan.zhuang@gmail.com</small></span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- Arxiv PDF link -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2507.17307" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+
+
+                <!-- Github link -->
+                <span class="link-block">
+                  <a href="https://github.com/Caesarhhh/R_Stitch" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+
+                <span class="link-block">
+                  <a href="https://scholar.googleusercontent.com/scholar.bib?q=info:L-aXZ6FU0VYJ:scholar.google.com/&output=citation&scisdr=CgIBXavQENivsT6gox0:AAZF9b8AAAAAaIWmux1fNZ6UnwDxaQkLs1214k4&scisig=AAZF9b8AAAAAaIWmuxkLjAKSxtpVwuQin0mfxMw&scisf=4&ct=citation&cd=-1&hl=zh-CN"
+                    target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span>BibTex</span>
+                  </a>
+                </span>
+                <!-- ArXiv abstract Link -->
+              </div>
+            </div>
+
           </div>
-
         </div>
       </div>
     </div>
+  </section>
+
+  <div class="content has-text-centered" style="font-size: 1.1rem;">
+    <p>
+      <strong>News:</strong><br>
+      <span style="font-weight: bold;">(07/24/2025)</span> 🎉 First version of the project is released on
+      <a href="https://arxiv.org/abs/2507.17307" target="_blank">arXiv</a>.
+    </p>
   </div>
-</section>
-
-<div class="content has-text-centered" style="font-size: 1.1rem;">
-  <p>
-    <strong>News:</strong><br>
-    <span style="font-weight: bold;">(07/24/2025)</span> 🎉 First version of the project is released on 
-    <a href="https://arxiv.org/abs/2507.17307" target="_blank">arXiv</a>.
-  </p>
-</div>
 
 
 
-<section class="section hero is-light">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            Chain-of-thought (CoT) enhances the problem-solving ability of large language models (LLMs) but incurs substantial inference cost due to long autoregressive trajectories. Existing acceleration strategies either shorten traces via early stopping or compression, or adopt speculative decoding with a smaller model. However, speculative decoding provides limited gains when model agreement is low and rigidly enforces token-level consistency, overlooking the observation that some smaller models, when correct, produce significantly more concise reasoning traces that could reduce inference length. We introduce <em>R-Stitch</em>, a training-free hybrid decoding framework that leverages token-level entropy as an uncertainty proxy to delegate computation between a small language model (SLM) and an LLM. Our analysis shows that high-entropy tokens are more likely to induce errors, motivating an entropy-guided routing strategy that lets the SLM efficiently handle low-entropy tokens while delegating uncertain ones to the LLM, thereby avoiding full rollbacks and preserving answer quality. We further extend this design with <em>R-Stitch<sup>+</sup></em>, which learns an adaptive routing policy to adjust the token budget dynamically beyond fixed thresholds. By jointly reducing per-token decoding complexity and the number of generated tokens, our method achieves substantial acceleration with negligible accuracy loss. Concretely, it attains peak speedups of <b>3.00×</b> on DeepSeek-R1-Distill-Qwen-7B, <b>3.85×</b> on 14B, and <b>4.10×</b> on QWQ-32B while maintaining accuracy comparable to full LLM decoding. Moreover, it naturally enables adaptive efficiency–accuracy trade-offs that can be tailored to diverse computational budgets without retraining. 
-          </p>
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Chain-of-thought (CoT) enhances the problem-solving ability of large language models (LLMs) but incurs
+              substantial inference cost due to long autoregressive trajectories. Existing acceleration strategies
+              either shorten traces via early stopping or compression, or adopt speculative decoding with a smaller
+              model. However, speculative decoding provides limited gains when model agreement is low and rigidly
+              enforces token-level consistency, overlooking the observation that some smaller models, when correct,
+              produce significantly more concise reasoning traces that could reduce inference length. We introduce
+              <em>R-Stitch</em>, a training-free hybrid decoding framework that leverages token-level entropy as an
+              uncertainty proxy to delegate computation between a small language model (SLM) and an LLM. Our analysis
+              shows that high-entropy tokens are more likely to induce errors, motivating an entropy-guided routing
+              strategy that lets the SLM efficiently handle low-entropy tokens while delegating uncertain ones to the
+              LLM, thereby avoiding full rollbacks and preserving answer quality. We further extend this design with
+              <em>R-Stitch<sup>+</sup></em>, which learns an adaptive routing policy to adjust the token budget
+              dynamically beyond fixed thresholds. By jointly reducing per-token decoding complexity and the number of
+              generated tokens, our method achieves substantial acceleration with negligible accuracy loss. Concretely,
+              it attains peak speedups of <b>3.00×</b> on DeepSeek-R1-Distill-Qwen-7B, <b>3.85×</b> on 14B, and
+              <b>4.10×</b> on QWQ-32B while maintaining accuracy comparable to full LLM decoding. Moreover, it naturally
+              enables adaptive efficiency–accuracy trade-offs that can be tailored to diverse computational budgets
+              without retraining.
+            </p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
 
-<section class="section">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered" 
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered"
         style="margin-bottom: 1.5rem; border: 2px solid #ddd; padding: 0.5rem 1rem; border-radius: 8px; display:inline-block;">
-      Token-level Consistency and Speedup Analysis
-    </h2>
+        Token-level Consistency and Speedup Analysis
+      </h2>
 
-    <!-- 分析文字 -->
-    <div class="content has-text-justified" style="font-size: 1rem; margin-bottom: 1.5rem;">
-      <p>
-        Speculative decoding has received considerable attention due to its potential for substantial speedups. 
-        However, its effectiveness critically depends on the <b>consistency between the small language model (SLM) 
-        and the large language model (LLM)</b>. We quantify this limitation using <i>token-level consistency</i>, 
-        defined as the percentage of tokens for which the SLM produces the same output as the LLM given an identical prefix.
-      </p>
-      <p>
-        Figure&nbsp;1 illustrates three aspects: (a) consistency–speedup trade-offs across different model pairs, 
-        (b) distribution of speedups across AMC samples, and (c) token length comparison for correctly answered questions. 
-        The results highlight that speculative decoding may suffer overheads when agreement is low, 
-        and fails to exploit the concise reasoning of SLMs effectively.
-      </p>
+      <!-- 分析文字 -->
+      <div class="content has-text-justified" style="font-size: 1rem; margin-bottom: 1.5rem;">
+        <p>
+          Speculative decoding has received considerable attention due to its potential for substantial speedups.
+          However, its effectiveness critically depends on the <b>consistency between the small language model (SLM)
+            and the large language model (LLM)</b>. We quantify this limitation using <i>token-level consistency</i>,
+          defined as the percentage of tokens for which the SLM produces the same output as the LLM given an identical
+          prefix.
+        </p>
+        <p>
+          Figure&nbsp;1 illustrates three aspects: (a) consistency–speedup trade-offs across different model pairs,
+          (b) distribution of speedups across AMC samples, and (c) token length comparison for correctly answered
+          questions.
+          The results highlight that speculative decoding may suffer overheads when agreement is low,
+          and fails to exploit the concise reasoning of SLMs effectively.
+        </p>
+      </div>
+
+      <!-- Slider -->
+      <div class="slider-token-wrapper" style="position: relative; height: 480px; overflow: visible; margin-top: 2rem;">
+        <div class="slide-token">
+          <img src="static/images/motivation_consistency_with_upperbound.png" alt="Token-level consistency vs. speedup">
+          <p><b>(a)</b> Token-level consistency vs. speedup.</p>
+        </div>
+        <div class="slide-token">
+          <img src="static/images/speedup_distribution_filtered.png" alt="Speedup distribution">
+          <p><b>(b)</b> Speedup distribution.</p>
+        </div>
+        <div class="slide-token">
+          <img src="static/images/token_length_bars.png" alt="Token usage comparison">
+          <p><b>(c)</b> Token usage by SLM vs. LLM.</p>
+        </div>
+
+        <!-- Nav -->
+        <button onclick="prevSlideToken()">◀</button>
+        <button onclick="nextSlideToken()">▶</button>
+      </div>
     </div>
-
-    <!-- Slider -->
-    <div class="slider-token-wrapper" style="position: relative; height: 480px; overflow: visible; margin-top: 2rem;">
-      <div class="slide-token">
-        <img src="static/images/motivation_consistency_with_upperbound.png" 
-             alt="Token-level consistency vs. speedup">
-        <p><b>(a)</b> Token-level consistency vs. speedup.</p>
-      </div>
-      <div class="slide-token">
-        <img src="static/images/speedup_distribution_filtered.png" 
-             alt="Speedup distribution">
-        <p><b>(b)</b> Speedup distribution.</p>
-      </div>
-      <div class="slide-token">
-        <img src="static/images/token_length_bars.png" 
-             alt="Token usage comparison">
-        <p><b>(c)</b> Token usage by SLM vs. LLM.</p>
-      </div>
-
-      <!-- Nav -->
-      <button onclick="prevSlideToken()">◀</button>
-      <button onclick="nextSlideToken()">▶</button>
-    </div>
-  </div>
-</section>
+  </section>
 
 
-<section class="section is-light">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered" 
+  <section class="section is-light">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered"
         style="margin-bottom: 1.5rem; border: 2px solid #ddd; padding: 0.5rem 1rem; border-radius: 8px; display:inline-block;">
-      Empirical Entropy Analysis
-    </h2>
+        Empirical Entropy Analysis
+      </h2>
 
-    <!-- 精简文字 -->
-    <div class="content has-text-justified" style="font-size: 1rem; margin-bottom: 1.5rem;">
-      <p>
-        We analyze entropy patterns on AMC using DeepSeek-R1-Distill-Qwen-7B (LLM) and L1-1.5B-Short (SLM), 
-        revealing three key observations:
-      </p>
-      <p><b>1. Incorrect answers show higher entropy.</b>  
-        Reasoning traces leading to wrong answers have significantly higher mean entropy (Figure&nbsp;2a).
-      </p>
-      <p><b>2. Most tokens are near-deterministic.</b>  
-        Over 89% of SLM tokens have entropy ≤ 0.1, indicating high prediction confidence (Figure&nbsp;2b).
-      </p>
-      <p><b>3. High-entropy tokens trigger errors.</b>  
-        Harmful tokens are often preceded by locally elevated entropy, making entropy a useful routing signal (Figure&nbsp;2c).
-      </p>
-    </div>
-
-    <!-- Slider -->
-    <div class="slider-entropy-wrapper" style="position: relative; height: 460px; overflow: visible; margin-top: 2rem;">
-      <div class="slide-entropy">
-        <img src="static/images/motivation/entropy_amc.png" alt="Entropy AMC">
-        <p><b>(a)</b> Higher entropy in incorrect solutions.</p>
-      </div>
-      <div class="slide-entropy">
-        <img src="static/images/motivation/token_entropys.png" alt="Token entropy distribution">
-        <p><b>(b)</b> Most tokens are near-zero entropy.</p>
-      </div>
-      <div class="slide-entropy">
-        <img src="static/images/motivation/entropy_neighborhood.png" alt="Entropy neighborhood">
-        <p><b>(c)</b> Elevated entropy before harmful tokens.</p>
+      <!-- 精简文字 -->
+      <div class="content has-text-justified" style="font-size: 1rem; margin-bottom: 1.5rem;">
+        <p>
+          We analyze entropy patterns on AMC using DeepSeek-R1-Distill-Qwen-7B (LLM) and L1-1.5B-Short (SLM),
+          revealing three key observations:
+        </p>
+        <p><b>1. Incorrect answers show higher entropy.</b>
+          Reasoning traces leading to wrong answers have significantly higher mean entropy (Figure&nbsp;2a).
+        </p>
+        <p><b>2. Most tokens are near-deterministic.</b>
+          Over 89% of SLM tokens have entropy ≤ 0.1, indicating high prediction confidence (Figure&nbsp;2b).
+        </p>
+        <p><b>3. High-entropy tokens trigger errors.</b>
+          Harmful tokens are often preceded by locally elevated entropy, making entropy a useful routing signal
+          (Figure&nbsp;2c).
+        </p>
       </div>
 
-      <!-- Nav -->
-      <button onclick="prevSlideEntropy()">◀</button>
-      <button onclick="nextSlideEntropy()">▶</button>
+      <!-- Slider -->
+      <div class="slider-entropy-wrapper"
+        style="position: relative; height: 460px; overflow: visible; margin-top: 2rem;">
+        <div class="slide-entropy">
+          <img src="static/images/motivation/entropy_amc.png" alt="Entropy AMC">
+          <p><b>(a)</b> Higher entropy in incorrect solutions.</p>
+        </div>
+        <div class="slide-entropy">
+          <img src="static/images/motivation/token_entropys.png" alt="Token entropy distribution">
+          <p><b>(b)</b> Most tokens are near-zero entropy.</p>
+        </div>
+        <div class="slide-entropy">
+          <img src="static/images/motivation/entropy_neighborhood.png" alt="Entropy neighborhood">
+          <p><b>(c)</b> Elevated entropy before harmful tokens.</p>
+        </div>
+
+        <!-- Nav -->
+        <button onclick="prevSlideEntropy()">◀</button>
+        <button onclick="nextSlideEntropy()">▶</button>
+      </div>
+
+      <!-- Figure caption -->
+      <div class="has-text-centered" style="margin-top: 1.5rem; font-size: 0.95rem; color: #555;">
+        <b>Figure 2.</b> Entropy and error locality.
+        (a) Incorrect solutions show higher entropy.
+        (b) Most tokens have near-zero entropy.
+        (c) Harmful tokens are preceded by high-entropy regions.
+      </div>
     </div>
-
-    <!-- Figure caption -->
-    <div class="has-text-centered" style="margin-top: 1.5rem; font-size: 0.95rem; color: #555;">
-      <b>Figure 2.</b> Entropy and error locality.  
-      (a) Incorrect solutions show higher entropy.  
-      (b) Most tokens have near-zero entropy.  
-      (c) Harmful tokens are preceded by high-entropy regions.
-    </div>
-  </div>
-</section>
+  </section>
 
 
 
 
-<style>
-.slide-token, .slide-entropy {
-  position: absolute;
-  top: 50%; left: 50%;
-  width: 60%;
-  transform: translate(-50%, -50%) scale(0.7);
-  opacity: 0; 
-  transition: all 0.6s ease;
-  text-align: center;
-}
-
-.slide-token img, .slide-entropy img {
-  max-width: 80%;   /* ✅ 保持合适大小 */
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  display: block;
-  margin: 0 auto;
-}
-
-.slide-token p, .slide-entropy p {
-  position: absolute;
-  bottom: -2.5rem;  /* 往下移出一些空间 */
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 0.9rem;
-  background: rgba(255,255,255,0.85);
-  padding: 0.2rem 1rem;   /* ✅ padding 调大一点 */
-  border-radius: 6px;
-  display: inline-block;
-  white-space: nowrap;    /* ✅ 不允许自动换行 */
-  min-width: 280px;       /* ✅ 最小宽度，避免太窄 */
-  text-align: center;     /* ✅ 居中文字 */
-}
-
-
-/* 三个状态：只改这里 */
-/* 中间图 */
-/* 包裹容器，确保外边部分被裁掉 */
-.slider-token-wrapper, .slider-entropy-wrapper {
-  position: relative;
-  height: 420px;
-  max-width: 100%;
-  overflow: hidden;   /* ✅ 外边部分不显示 */
-  margin: 2rem auto;
-  isolation: isolate; 
-  contain: paint;     /* ✅ 关键：强制建立裁剪上下文 */
-}
-
-/* 中间图 */
-.active {
-  opacity: 1 !important;
-  transform: translate(-50%, -50%) scale(1) !important; 
-  z-index: 3;
-}
-
-/* 左边图：挤到容器左边，只露右半部分 */
-.left {
-  opacity: 0.6 !important;
-  transform: translate(-125%, -50%) scale(0.85) !important;  
-  z-index: 2;
-}
-
-/* 右边图：挤到容器右边，只露左半部分 */
-.right {
-  opacity: 0.6 !important;
-  transform: translate(25%, -50%) scale(0.85) !important;   
-  z-index: 2;
-}
-
-
-
-/* 按钮修复点击穿透 */
-.slider-token-wrapper button,
-.slider-entropy-wrapper button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255,255,255,0.85);
-  border: none;
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
-  font-size: 18px;
-  cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  z-index: 10;
-  transition: background 0.3s ease;
-}
-.slider-token-wrapper button:hover,
-.slider-entropy-wrapper button:hover {
-  background: rgba(255,255,255,1);
-}
-.slider-token-wrapper button:first-of-type,
-.slider-entropy-wrapper button:first-of-type {
-  left: 10px;
-}
-.slider-token-wrapper button:last-of-type,
-.slider-entropy-wrapper button:last-of-type {
-  right: 10px;
-}
-
-
-</style>
-
-
-<script>
-  function initSlider(wrapperSelector, slideSelector, prevFnName, nextFnName) {
-    let currentIndex = 0;
-    const slides = document.querySelectorAll(slideSelector);
-    if (!slides.length) return;
-
-    function updateSlides() {
-      slides.forEach((s,i)=>{
-        s.classList.remove("active","left","right");
-        if(i===currentIndex) s.classList.add("active");
-        else if(i===(currentIndex-1+slides.length)%slides.length) s.classList.add("left");
-        else if(i===(currentIndex+1)%slides.length) s.classList.add("right");
-      });
+  <style>
+    .slide-token,
+    .slide-entropy {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 60%;
+      transform: translate(-50%, -50%) scale(0.7);
+      opacity: 0;
+      transition: all 0.6s ease;
+      text-align: center;
     }
 
-    window[prevFnName] = ()=>{ currentIndex=(currentIndex-1+slides.length)%slides.length; updateSlides(); }
-    window[nextFnName] = ()=>{ currentIndex=(currentIndex+1)%slides.length; updateSlides(); }
+    .slide-token img,
+    .slide-entropy img {
+      max-width: 80%;
+      /* ✅ 保持合适大小 */
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      display: block;
+      margin: 0 auto;
+    }
 
-    updateSlides(); // 初始化
-  }
+    .slide-token p,
+    .slide-entropy p {
+      position: absolute;
+      bottom: -2.5rem;
+      /* 往下移出一些空间 */
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.9rem;
+      background: rgba(255, 255, 255, 0.85);
+      padding: 0.2rem 1rem;
+      /* ✅ padding 调大一点 */
+      border-radius: 6px;
+      display: inline-block;
+      white-space: nowrap;
+      /* ✅ 不允许自动换行 */
+      min-width: 280px;
+      /* ✅ 最小宽度，避免太窄 */
+      text-align: center;
+      /* ✅ 居中文字 */
+    }
 
-  window.addEventListener("load", ()=>{
-    initSlider(".slider-token-wrapper",".slide-token","prevSlideToken","nextSlideToken");
-    initSlider(".slider-entropy-wrapper",".slide-entropy","prevSlideEntropy","nextSlideEntropy");
-  });
-</script>
+
+    /* 三个状态：只改这里 */
+    /* 中间图 */
+    /* 包裹容器，确保外边部分被裁掉 */
+    .slider-token-wrapper,
+    .slider-entropy-wrapper {
+      position: relative;
+      height: 420px;
+      max-width: 100%;
+      overflow: hidden;
+      /* ✅ 外边部分不显示 */
+      margin: 2rem auto;
+      isolation: isolate;
+      contain: paint;
+      /* ✅ 关键：强制建立裁剪上下文 */
+    }
+
+    /* 中间图 */
+    .active {
+      opacity: 1 !important;
+      transform: translate(-50%, -50%) scale(1) !important;
+      z-index: 3;
+    }
+
+    /* 左边图：挤到容器左边，只露右半部分 */
+    .left {
+      opacity: 0.6 !important;
+      transform: translate(-125%, -50%) scale(0.85) !important;
+      z-index: 2;
+    }
+
+    /* 右边图：挤到容器右边，只露左半部分 */
+    .right {
+      opacity: 0.6 !important;
+      transform: translate(25%, -50%) scale(0.85) !important;
+      z-index: 2;
+    }
 
 
-<!-- Video carousel -->
-<!-- Methodology Section (improved) -->
-<section id="rstitch-method" class="section">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered"
+
+    /* 按钮修复点击穿透 */
+    .slider-token-wrapper button,
+    .slider-entropy-wrapper button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.85);
+      border: none;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      font-size: 18px;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      z-index: 10;
+      transition: background 0.3s ease;
+    }
+
+    .slider-token-wrapper button:hover,
+    .slider-entropy-wrapper button:hover {
+      background: rgba(255, 255, 255, 1);
+    }
+
+    .slider-token-wrapper button:first-of-type,
+    .slider-entropy-wrapper button:first-of-type {
+      left: 10px;
+    }
+
+    .slider-token-wrapper button:last-of-type,
+    .slider-entropy-wrapper button:last-of-type {
+      right: 10px;
+    }
+  </style>
+
+
+  <script>
+    function initSlider(wrapperSelector, slideSelector, prevFnName, nextFnName) {
+      let currentIndex = 0;
+      const slides = document.querySelectorAll(slideSelector);
+      if (!slides.length) return;
+
+      function updateSlides() {
+        slides.forEach((s, i) => {
+          s.classList.remove("active", "left", "right");
+          if (i === currentIndex) s.classList.add("active");
+          else if (i === (currentIndex - 1 + slides.length) % slides.length) s.classList.add("left");
+          else if (i === (currentIndex + 1) % slides.length) s.classList.add("right");
+        });
+      }
+
+      window[prevFnName] = () => { currentIndex = (currentIndex - 1 + slides.length) % slides.length; updateSlides(); }
+      window[nextFnName] = () => { currentIndex = (currentIndex + 1) % slides.length; updateSlides(); }
+
+      updateSlides(); // 初始化
+    }
+
+    window.addEventListener("load", () => {
+      initSlider(".slider-token-wrapper", ".slide-token", "prevSlideToken", "nextSlideToken");
+      initSlider(".slider-entropy-wrapper", ".slide-entropy", "prevSlideEntropy", "nextSlideEntropy");
+    });
+  </script>
+
+
+  <!-- Video carousel -->
+  <!-- ========== R-Stitch Methodology (self-contained, scoped) ========== -->
+  <section id="rstitch-method" class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered"
         style="margin-bottom: 1.2rem; border: 2px solid #ddd; padding: 0.45rem 0.9rem; border-radius: 8px; display:inline-block;">
-      Methodology
-    </h2>
+        Methodology
+      </h2>
 
-    <!-- Overview figure (always visible) -->
-    <figure class="has-text-centered" style="margin: 1.25rem 0 1.5rem 0;">
-      <img src="static/images/cot_methodv2.png"
-           alt="Overview of R-Stitch"
-           style="max-width: 88%; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.12);">
-      <figcaption style="margin-top:0.6rem; font-size:0.92rem; color:#555;">
-        <strong>Figure.</strong> Overview of <em>R-Stitch</em>: entropy-guided bidirectional decoding between SLM and LLM.
-      </figcaption>
-    </figure>
+      <!-- Overview figure: always visible -->
+      <figure class="has-text-centered" style="margin: 1.25rem 0 1.5rem 0;">
+        <img src="static/images/cot_methodv2.png" alt="Overview of R-Stitch"
+          style="max-width: 88%; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.12);">
+        <figcaption style="margin-top:0.6rem; font-size:0.92rem; color:#555;">
+          <strong>Figure.</strong> Overview of <em>R-Stitch</em>: entropy-guided bidirectional decoding between SLM and
+          LLM.
+        </figcaption>
+      </figure>
 
-    <!-- Slider -->
-    <div class="rst-method-wrapper" style="max-width:920px; margin: 0 auto;">
-      <div class="rst-method-slider" style="position:relative; width:100%; height:480px;">
-        
-        <!-- Card 1 -->
-        <article class="rst-method-card" data-index="0">
-          <div class="rst-card-inner">
-            <h3 class="title is-5 has-text-centered">R-Stitch — Entropy-Guided Decoding</h3>
-            <p>
-              R-Stitch is a collaborative decoding framework that leverages <em>entropy</em> as an
-              uncertainty signal. The small language model (SLM) begins decoding to reduce latency.
-              When the entropy of its predicted token is below a threshold, the token is accepted.
-              Otherwise, the token is discarded and recomputed by the large model (LLM).
-            </p>
-            <p>
-              This mechanism is <strong>bidirectional</strong>: once the LLM outputs low-entropy tokens,
-              control returns to the SLM, ensuring efficiency while preserving reliability.
-              The approach explicitly exploits complementary strengths of SLM and LLM, balancing
-              cost and accuracy at token-level granularity.
-            </p>
-          </div>
-        </article>
+      <!-- Slider (cards) -->
+      <div class="rst-method-wrapper" style="max-width:920px; margin: 0 auto;">
+        <div class="rst-method-slider" style="position:relative; width:100%; height:360px;">
 
-        <!-- Card 2 -->
-        <article class="rst-method-card" data-index="1">
-          <div class="rst-card-inner">
-            <h3 class="title is-5 has-text-centered">R-Stitch<sup>+</sup> — RL-based Adaptive Routing</h3>
-            <p>
-              R-Stitch<sup>+</sup> extends the entropy-based routing with a lightweight reinforcement
-              learning (RL) router. Instead of using a fixed threshold, the router decides adaptively
-              whether to keep decoding with the SLM or switch to the LLM when entropy is high.
-            </p>
-            <p>
-              The router is trained with a <strong>latency-aware reward</strong> that combines correctness
-              and efficiency. A simple cost model estimates trajectory latency from the number of tokens
-              and cache size, avoiding costly wall-clock profiling. This allows the policy to achieve
-              tunable efficiency–accuracy trade-offs beyond rule-based thresholds.
-            </p>
-          </div>
-        </article>
+          <!-- Card 1 -->
+          <article class="rst-method-card" data-index="0">
+            <div class="rst-card-inner">
+              <h3 class="title is-5 has-text-centered">R-Stitch — Entropy-Guided Decoding</h3>
+              <p>
+                <b>R-Stitch</b> is a token-level hybrid decoding framework. A small model (SLM) starts decoding to
+                minimize latency.
+                At each step, we compute the normalized token entropy <i>H</i><sub>t</sub> from the predictive
+                distribution.
+                If <i>H</i><sub>t</sub> is low, the SLM’s token is accepted; otherwise the step is delegated to the
+                large model (LLM),
+                which overwrites the token and continues decoding.
+              </p>
+              <p>
+                Crucially, switching is <b>bidirectional</b>: when the LLM enters a low-entropy region, control returns
+                to the SLM to
+                reduce cost again. Both models maintain their own KV caches; on a switch we reuse the previous cache and
+                only
+                <i>partially prefill</i> the new span, avoiding redundant attention on old tokens. This design jointly
+                reduces
+                per-token compute and overall sequence length while retaining LLM-level answer quality.
+              </p>
+            </div>
+          </article>
 
-        <!-- Card 3 (Algorithm figure) -->
-        <article class="rst-method-card" data-index="2">
-          <div class="rst-card-inner" style="text-align:center;">
-            <h3 class="title is-5">Algorithm Flow</h3>
-            <img src="static/images/rstitch_algo.png" alt="R-Stitch Algorithm Flow"
-                 style="max-width:90%; margin-top:0.6rem; border-radius:8px; box-shadow:0 3px 10px rgba(0,0,0,0.08);">
-            <p style="margin-top:0.6rem; font-size:0.9rem; color:#555;">
-              Flowchart of the proposed R-Stitch algorithm. (Replace with your finalized figure.)
-            </p>
-          </div>
-        </article>
 
-        <!-- Buttons + Dots -->
-        <button class="rst-btn rst-prev" aria-label="Previous">◀</button>
-        <button class="rst-btn rst-next" aria-label="Next">▶</button>
-        <div class="rst-dots"></div>
+          <!-- Card 2 -->
+          <article class="rst-method-card" data-index="1">
+            <div class="rst-card-inner">
+              <h3 class="title is-5 has-text-centered">R-Stitch<sup>+</sup> — RL-based Adaptive Routing</h3>
+              <p>
+                <b>R-Stitch<sup>+</sup></b> replaces fixed thresholds with a lightweight RL router that acts only when
+                entropy is high.
+                Given the current hidden state and context length, the router decides to continue with the SLM or to
+                switch to the LLM,
+                learning an <b>adaptive policy</b> that generalizes across prompts and budgets.
+              </p>
+              <p>
+                Training uses a <b>latency-aware reward</b> combining final-answer accuracy with an efficiency term
+                derived from a simple
+                cost estimator (prefill/decoding latency as a function of input length and KV size). This encourages
+                policies that
+                attain LLM-level accuracy at substantially lower end-to-end latency, and allows smooth
+                efficiency–accuracy trade-offs
+                without retraining the LMs.
+              </p>
+            </div>
+          </article>
+
+
+          <!-- Card 3 (algorithm figure placeholder) -->
+          <article class="rst-method-card" data-index="2">
+            <div class="rst-card-inner" style="text-align:center;">
+              <h3 class="title is-5">Algorithm Flow</h3>
+              <img src="static/images/rstitch_algo.png" alt="R-Stitch Algorithm Flow"
+                style="max-width:78%; margin-top:0.6rem; border-radius:8px; box-shadow:0 3px 10px rgba(0,0,0,0.08);">
+              <p style="margin-top:0.6rem; font-size:0.9rem; color:#555;">
+                Flowchart of the proposed R-Stitch algorithm. (Replace image with your final figure.)
+              </p>
+            </div>
+          </article>
+
+          <!-- Prev/Next buttons (inside the slider container) -->
+          <button class="rst-btn rst-prev" aria-label="Previous">◀</button>
+          <button class="rst-btn rst-next" aria-label="Next">▶</button>
+
+          <!-- Dots indicator -->
+          <div class="rst-dots" aria-hidden="false"></div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<style>
-  #rstitch-method .rst-method-slider { height: 480px; } /* ✅ higher */
-  #rstitch-method .rst-method-card .rst-card-inner {
-    height: calc(100% - 12px); 
-    overflow-y: auto;
-  }
-</style>
+  <style>
+    /* Scoped to #rstitch-method to avoid conflicts */
+    #rstitch-method .rst-method-slider {
+      position: relative;
+    }
 
-<!-- ========== end rstitch-method block ========== -->
+    #rstitch-method .rst-method-card {
+      position: absolute;
+      inset: 0;
+      /* top:0; right:0; bottom:0; left:0 */
+      display: none;
+      padding: 1rem;
+      box-sizing: border-box;
+    }
+
+    #rstitch-method .rst-method-card .rst-card-inner {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 10px;
+      height: calc(100% - 12px);
+      padding: 1.15rem 1.25rem;
+      box-shadow: 0 6px 18px rgba(20, 20, 20, 0.06);
+      overflow-y: auto;
+    }
+
+    #rstitch-method .rst-method-card.rst-active {
+      display: block;
+    }
+
+    /* Buttons */
+    #rstitch-method .rst-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+      cursor: pointer;
+      z-index: 60;
+      font-size: 16px;
+    }
+
+    #rstitch-method .rst-prev {
+      left: 6px;
+    }
+
+    #rstitch-method .rst-next {
+      right: 6px;
+    }
+
+    @media (min-width:1200px) {
+
+      /* slightly pull buttons outwards on very wide screens */
+      #rstitch-method .rst-prev {
+        left: -40px;
+      }
+
+      #rstitch-method .rst-next {
+        right: -40px;
+      }
+    }
+
+    #rstitch-method .rst-btn:hover {
+      background: #fff;
+    }
+
+    /* Dots */
+    #rstitch-method .rst-dots {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 60;
+    }
+
+    #rstitch-method .rst-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #cfcfcf;
+      cursor: pointer;
+    }
+
+    #rstitch-method .rst-dot.rst-dot-active {
+      background: #333;
+    }
+
+    /* typography tweaks */
+    #rstitch-method .rst-card-inner p {
+      line-height: 1.55;
+      color: #222;
+      font-size: 0.98rem;
+    }
+
+    #rstitch-method .rst-card-inner h3.title {
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const root = document.getElementById('rstitch-method');
+      if (!root) return;
+
+      const slides = Array.from(root.querySelectorAll('.rst-method-card'));
+      const prev = root.querySelector('.rst-prev');
+      const next = root.querySelector('.rst-next');
+      const dotsContainer = root.querySelector('.rst-dots');
+
+      if (!slides.length) return;
+
+      // build dots
+      slides.forEach((_, i) => {
+        const d = document.createElement('button');
+        d.type = 'button';
+        d.className = 'rst-dot';
+        d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+        d.addEventListener('click', () => show(i));
+        dotsContainer.appendChild(d);
+      });
+
+      const dots = Array.from(dotsContainer.children);
+
+      let idx = 0;
+      function show(n) {
+        idx = (n + slides.length) % slides.length;
+        slides.forEach((s, i) => {
+          s.classList.toggle('rst-active', i === idx);
+        });
+        dots.forEach((d, i) => d.classList.toggle('rst-dot-active', i === idx));
+      }
+
+      prev.addEventListener('click', () => show(idx - 1));
+      next.addEventListener('click', () => show(idx + 1));
+
+      // initial
+      show(0);
+
+      // optional: keyboard navigation
+      root.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') prev.click();
+        if (e.key === 'ArrowRight') next.click();
+      });
+
+      // make sure the slider container can receive keyboard focus for accessibility
+      root.setAttribute('tabindex', '-1');
+    });
+  </script>
+  <!-- ========== end rstitch-method block ========== -->
 
 
-<!-- End video carousel -->
+  <!-- End video carousel -->
 
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container" style="max-width: 70%; margin: 0 auto;">
-      <h2 class="title is-3">Performance</h2>
+  <section class="hero is-small is-light">
+    <div class="hero-body">
+      <div class="container" style="max-width: 70%; margin: 0 auto;">
+        <h2 class="title is-3">Performance</h2>
 
-      <div class="has-text-centered">
-        <figure class="image is-inline-block">
-          <img src="static/images/performance.png" alt="Performance">
-        </figure>
+        <div class="has-text-centered">
+          <figure class="image is-inline-block">
+            <img src="static/images/performance.png" alt="Performance">
+          </figure>
+        </div>
+
       </div>
-
     </div>
-  </div>
-</section>
+  </section>
 
 
-<!--
+  <!--
 <section class="hero is-small is-light">
   <div class="hero-body">
     <div class="container content" style="max-width: 70%; margin: 0 auto;">
@@ -527,7 +722,7 @@
 -->
 
 
-<!--BibTex citation -->
+  <!--BibTex citation -->
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
@@ -538,16 +733,17 @@
         year={2025}
       }</code></pre>
     </div>
-</section>
-<!--End BibTex citation -->
+  </section>
+  <!--End BibTex citation -->
 
 
 
-<!-- Statcounter tracking code -->
-  
-<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+  <!-- Statcounter tracking code -->
 
-    <!-- End of Statcounter Code -->
+  <!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
 
-  </body>
-  </html>
+  <!-- End of Statcounter Code -->
+
+</body>
+
+</html>
