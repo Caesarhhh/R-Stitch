@@ -158,25 +158,12 @@
   </div>
 </section>
 
-<style>
-  .section-title-box {
-    font-size: 1.8rem;
-    font-weight: 700;
-    text-align: center;
-    display: inline-block;
-    padding: 0.4rem 1.2rem;
-    border: 2px solid #333;
-    border-radius: 8px;
-    background: #fafafa;
-  }
-</style>
-
 
 <section class="section">
   <div class="container is-max-desktop">
-    <h2 class="section-title-box">
-  Token-level Consistency and Speedup Analysis
-  </h2>
+    <div class="section-title-line">
+      <span>Token-level Consistency and Speedup Analysis</span>
+    </div>
 
     <!-- Intro text -->
     <div class="content has-text-justified" style="font-size: 1rem;">
@@ -188,35 +175,26 @@
       </p>
     </div>
 
-    <!-- Coverflow Slider -->
-    <div class="slider-wrapper" style="position: relative; width: 100%; max-width: 900px; margin: 2rem auto; overflow: hidden;">
-      <div class="slider" style="position: relative; height: 500px;">
-
-        <!-- Slide 1 -->
-        <div class="slide">
-          <img src="static/images/motivation_consistency_with_upperbound.png" alt="Token-level consistency vs. speedup">
-          <p><b>(a)</b> Token-level consistency vs. speedup across LLMs.</p>
-        </div>
-
-        <!-- Slide 2 -->
-        <div class="slide">
-          <img src="static/images/speedup_distribution_filtered.png" alt="Speedup distribution">
-          <p><b>(b)</b> Speedup distribution across AMC samples.</p>
-        </div>
-
-        <!-- Slide 3 -->
-        <div class="slide">
-          <img src="static/images/token_length_bars.png" alt="Token usage comparison">
-          <p><b>(c)</b> Token usage by SLM vs. LLM on correct answers.</p>
-        </div>
-
+    <!-- Slider -->
+    <div class="slider-token-wrapper" style="position: relative; width: 100%; max-width: 900px; margin: 2rem auto; height: 500px; overflow: hidden;">
+      <div class="slide-token">
+        <img src="static/images/motivation_consistency_with_upperbound.png" alt="Token-level consistency vs. speedup">
+        <p><b>(a)</b> Token-level consistency vs. speedup across LLMs.</p>
+      </div>
+      <div class="slide-token">
+        <img src="static/images/speedup_distribution_filtered.png" alt="Speedup distribution">
+        <p><b>(b)</b> Speedup distribution across AMC samples.</p>
+      </div>
+      <div class="slide-token">
+        <img src="static/images/token_length_bars.png" alt="Token usage comparison">
+        <p><b>(c)</b> Token usage by SLM vs. LLM on correct answers.</p>
       </div>
 
       <!-- Navigation arrows -->
-      <button onclick="prevSlide()" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; border-radius: 50%; width: 36px; height: 36px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.2); z-index: 10;">
+      <button onclick="prevSlideToken()" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; border-radius: 50%; width: 36px; height: 36px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.2); z-index: 10;">
         ◀
       </button>
-      <button onclick="nextSlide()" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; border-radius: 50%; width: 36px; height: 36px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.2); z-index: 10;">
+      <button onclick="nextSlideToken()" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; border-radius: 50%; width: 36px; height: 36px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.2); z-index: 10;">
         ▶
       </button>
     </div>
@@ -231,104 +209,17 @@
   </div>
 </section>
 
-<style>
-  .slide {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 70%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    transform: translate(-50%, -50%) scale(0.7);
-    text-align: center;
-    transition: all 0.6s ease;
-    opacity: 0;
-    z-index: 0;
-  }
-  .slide img {
-    max-width: 80%; /* 缩小图片 */
-    height: auto;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  }
-  .slide p {
-    margin-top: 0.6rem;
-    font-size: 0.9rem;
-    background: rgba(255,255,255,0.8); /* 防止被图像边缘挡住 */
-    padding: 0.2rem 0.4rem;
-    border-radius: 6px;
-    display: inline-block;
-  }
-  .slide.active {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-    z-index: 3;
-  }
-  .slide.left {
-    opacity: 0.6;
-    transform: translate(-125%, -50%) scale(0.85); /* 从 -150% 改到 -100% */
-    z-index: 2;
-  }
-  .slide.right {
-    opacity: 0.6;
-    transform: translate(25%, -50%) scale(0.85); /* 从 50% 改到 0% */
-    z-index: 2;
-  }
-
-</style>
-
-
-<script>
-  window.addEventListener("DOMContentLoaded", () => {
-    let currentIndex = 0;
-    const slides = document.querySelectorAll('.slide');
-
-    function updateSlides() {
-      slides.forEach((slide, i) => {
-        slide.classList.remove("active", "left", "right");
-        if (i === currentIndex) {
-          slide.classList.add("active");
-        } else if (i === (currentIndex - 1 + slides.length) % slides.length) {
-          slide.classList.add("left");
-        } else if (i === (currentIndex + 1) % slides.length) {
-          slide.classList.add("right");
-        }
-      });
-    }
-
-    window.prevSlide = function () {
-      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-      updateSlides();
-    }
-
-    window.nextSlide = function () {
-      currentIndex = (currentIndex + 1) % slides.length;
-      updateSlides();
-    }
-
-    // 初始化
-    updateSlides();
-  });
-</script>
-
-
-
 
 <section class="section">
   <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered" style="margin-bottom: 1.5rem;">
-      Empirical Entropy Analysis
-    </h2>
+    <div class="section-title-line">
+      <span>Empirical Entropy Analysis</span>
+    </div>
 
     <!-- Intro text -->
     <div class="content has-text-justified" style="font-size: 1rem;">
       <p>
-        Large language models (LLMs) exhibit stronger reasoning capabilities but incur substantially higher inference costs compared to small language models (SLMs). Prior work shows that when the two models produce consistent outputs, delegating computation to the SLM can effectively reduce latency. This raises a fundamental question: <b>under what conditions can SLM predictions be relied upon without compromising correctness?</b>
-      </p>
-      <p>
-        To answer this, we conduct sample- and token-level entropy analyses on AMC using DeepSeek-R1-Distill-Qwen-7B (LLM) and L1-1.5B-Short (SLM), which reveal systematic patterns of entropy.
+        Large language models (LLMs) exhibit stronger reasoning capabilities but incur substantially higher inference costs compared to small language models (SLMs). To understand when SLM predictions can be trusted without compromising correctness, we conduct sample- and token-level entropy analyses on AMC using DeepSeek-R1-Distill-Qwen-7B (LLM) and L1-1.5B-Short (SLM).
       </p>
       <ul>
         <li><b>(1)</b> Incorrect answers are associated with <i>higher entropy</i>.</li>
@@ -337,35 +228,26 @@
       </ul>
     </div>
 
-    <!-- Coverflow Slider -->
-    <div class="slider-wrapper" style="position: relative; width: 100%; max-width: 900px; margin: 2rem auto; overflow: hidden;">
-      <div class="slider" style="position: relative; height: 500px;">
-
-        <!-- Slide 1 -->
-        <div class="slide">
-          <img src="static/images/motivation/entropy_amc.png" alt="Sample-level entropy in correct vs incorrect solutions">
-          <p><b>(a)</b> Incorrect solutions exhibit higher entropy than correct ones.</p>
-        </div>
-
-        <!-- Slide 2 -->
-        <div class="slide">
-          <img src="static/images/motivation/token_entropys.png" alt="Token-level entropy distribution">
-          <p><b>(b)</b> The entropy distribution is heavily skewed toward zero; most tokens have (near-)zero entropy.</p>
-        </div>
-
-        <!-- Slide 3 -->
-        <div class="slide">
-          <img src="static/images/motivation/entropy_neighborhood.png" alt="Entropy around harmful tokens">
-          <p><b>(c)</b> Context around harmful tokens shows elevated entropy, signaling error-prone regions.</p>
-        </div>
-
+    <!-- Slider -->
+    <div class="slider-entropy-wrapper" style="position: relative; width: 100%; max-width: 900px; margin: 2rem auto; height: 500px; overflow: hidden;">
+      <div class="slide-entropy">
+        <img src="static/images/motivation/entropy_amc.png" alt="Sample-level entropy">
+        <p><b>(a)</b> Incorrect solutions exhibit higher entropy than correct ones.</p>
+      </div>
+      <div class="slide-entropy">
+        <img src="static/images/motivation/token_entropys.png" alt="Token-level entropy distribution">
+        <p><b>(b)</b> The entropy distribution is skewed toward zero; most tokens have near-zero entropy.</p>
+      </div>
+      <div class="slide-entropy">
+        <img src="static/images/motivation/entropy_neighborhood.png" alt="Entropy around harmful tokens">
+        <p><b>(c)</b> Context around harmful tokens shows elevated entropy, signaling error-prone regions.</p>
       </div>
 
       <!-- Navigation arrows -->
-      <button onclick="prevSlide2()" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; border-radius: 50%; width: 36px; height: 36px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.2); z-index: 10;">
+      <button onclick="prevSlideEntropy()" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; border-radius: 50%; width: 36px; height: 36px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.2); z-index: 10;">
         ◀
       </button>
-      <button onclick="nextSlide2()" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; border-radius: 50%; width: 36px; height: 36px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.2); z-index: 10;">
+      <button onclick="nextSlideEntropy()" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; border-radius: 50%; width: 36px; height: 36px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.2); z-index: 10;">
         ▶
       </button>
     </div>
@@ -380,8 +262,32 @@
   </div>
 </section>
 
+
 <style>
-  .slide {
+  .section-title-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+  .section-title-line span {
+    font-size: 1.6rem;
+    font-weight: 700;
+    padding: 0 1rem;
+    text-align: center;
+  }
+  .section-title-line::before,
+  .section-title-line::after {
+    content: "";
+    flex: 1;
+    height: 2px;
+    background: #ccc;
+  }
+  .section-title-line::before { margin-right: 1rem; }
+  .section-title-line::after { margin-left: 1rem; }
+
+  /* slider 通用样式 */
+  .slide-token, .slide-entropy {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -396,13 +302,13 @@
     opacity: 0;
     z-index: 0;
   }
-  .slide img {
-    max-width: 80%; /* 这里沿用你喜欢的 80% */
+  .slide-token img, .slide-entropy img {
+    max-width: 80%;
     height: auto;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   }
-  .slide p {
+  .slide-token p, .slide-entropy p {
     margin-top: 0.6rem;
     font-size: 0.9rem;
     background: rgba(255,255,255,0.8);
@@ -410,54 +316,22 @@
     border-radius: 6px;
     display: inline-block;
   }
-  .slide.active {
+  .slide-token.active, .slide-entropy.active {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
     z-index: 3;
   }
-  .slide.left {
+  .slide-token.left, .slide-entropy.left {
     opacity: 0.6;
-    transform: translate(-125%, -50%) scale(0.85); /* 你定的最佳参数 */
+    transform: translate(-125%, -50%) scale(0.85);
     z-index: 2;
   }
-  .slide.right {
+  .slide-token.right, .slide-entropy.right {
     opacity: 0.6;
-    transform: translate(25%, -50%) scale(0.85); /* 你定的最佳参数 */
+    transform: translate(25%, -50%) scale(0.85);
     z-index: 2;
   }
 </style>
-
-<script>
-  window.addEventListener("DOMContentLoaded", () => {
-    let currentIndex2 = 0;
-    const slides2 = document.querySelectorAll('.slider-wrapper:nth-of-type(1) .slide');
-
-    function updateSlides2() {
-      slides2.forEach((slide, i) => {
-        slide.classList.remove("active", "left", "right");
-        if (i === currentIndex2) {
-          slide.classList.add("active");
-        } else if (i === (currentIndex2 - 1 + slides2.length) % slides2.length) {
-          slide.classList.add("left");
-        } else if (i === (currentIndex2 + 1) % slides2.length) {
-          slide.classList.add("right");
-        }
-      });
-    }
-
-    window.prevSlide2 = function () {
-      currentIndex2 = (currentIndex2 - 1 + slides2.length) % slides2.length;
-      updateSlides2();
-    }
-
-    window.nextSlide2 = function () {
-      currentIndex2 = (currentIndex2 + 1) % slides2.length;
-      updateSlides2();
-    }
-
-    updateSlides2();
-  });
-</script>
 
 
 
