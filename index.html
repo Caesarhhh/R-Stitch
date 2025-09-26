@@ -298,24 +298,33 @@
 
 /* 三个状态：只改这里 */
 /* 中间图 */
-.active { 
-  opacity: 1 !important; 
+/* 包裹容器，确保外边部分被裁掉 */
+.slider-token-wrapper, .slider-entropy-wrapper {
+  position: relative;
+  height: 420px;
+  overflow: hidden;   /* ✅ 外边部分不显示 */
+  margin-top: 2rem;
+}
+
+/* 中间图 */
+.active {
+  opacity: 1 !important;
   transform: translate(-50%, -50%) scale(1) !important; 
-  z-index: 3; 
+  z-index: 3;
 }
 
-/* 左边图：往中间靠一些，但仍超出左边 */
-.left { 
-  opacity: 0.6 !important; 
-  transform: translate(-90%, -50%) scale(0.85) !important;  
-  z-index: 2; 
+/* 左边图：挤到容器左边，只露右半部分 */
+.left {
+  opacity: 0.6 !important;
+  transform: translate(-160%, -50%) scale(0.85) !important;  
+  z-index: 2;
 }
 
-/* 右边图：往中间靠一些，但仍超出右边 */
-.right { 
-  opacity: 0.6 !important; 
-  transform: translate(-10%, -50%) scale(0.85) !important;  
-  z-index: 2; 
+/* 右边图：挤到容器右边，只露左半部分 */
+.right {
+  opacity: 0.6 !important;
+  transform: translate(60%, -50%) scale(0.85) !important;   
+  z-index: 2;
 }
 
 
