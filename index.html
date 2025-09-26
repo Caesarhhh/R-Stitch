@@ -48,99 +48,111 @@
 
 
   <!-- 🚀 Fancy Right Sidebar Navigation -->
-<aside id="sidebar-nav"
-style="position: fixed; top: 100px; right: 40px; width: 220px; background: #fff;
+  <aside id="sidebar-nav" style="position: fixed; top: 100px; right: 40px; width: 220px; background: #fff;
        border: 1px solid #eee; border-radius: 12px; padding: 1rem;
        box-shadow: 0 4px 12px rgba(0,0,0,0.08); font-size: 0.95rem;">
 
-<p style="font-weight: 600; font-size: 1rem; margin-bottom: 0.5rem;">📑 Navigation</p>
-<ul style="list-style: none; margin: 0; padding: 0;">
-  <li><a href="#abstract" class="nav-link">Abstract</a></li>
-  <li><a href="#consistency" class="nav-link">Token-level Consistency</a></li>
-  <li><a href="#entropy" class="nav-link">Entropy Analysis</a></li>
-  <li><a href="#method" class="nav-link">Methodology</a></li>
-  <li><a href="#performance" class="nav-link">Performance</a></li>
-</ul>
-</aside>
+    <p style="font-weight: 600; font-size: 1rem; margin-bottom: 0.5rem;">📑 Navigation</p>
+    <ul style="list-style: none; margin: 0; padding: 0;">
+      <li><a href="#abstract" class="nav-link">Abstract</a></li>
+      <li><a href="#consistency" class="nav-link">Token-level Consistency</a></li>
+      <li><a href="#entropy" class="nav-link">Entropy Analysis</a></li>
+      <li><a href="#method" class="nav-link">Methodology</a></li>
+      <li><a href="#performance" class="nav-link">Performance</a></li>
+    </ul>
+  </aside>
 
-<style>
-html { scroll-behavior: smooth; }
-
-#sidebar-nav .nav-link {
-  display: block;
-  padding: 0.4rem 0.6rem;
-  color: #333;
-  border-radius: 6px;
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
-
-#sidebar-nav .nav-link:hover {
-  background: #f2f2f2;
-}
-
-#sidebar-nav .nav-link.active {
-  background: #333;
-  color: #fff;
-  font-weight: 600;
-}
-</style>
-
-<script>
-// 自动高亮当前 section
-const sections = document.querySelectorAll("section[id]");
-const navLinks = document.querySelectorAll("#sidebar-nav .nav-link");
-
-window.addEventListener("scroll", () => {
-  let current = "";
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop - 100;
-    if (scrollY >= sectionTop) {
-      current = section.getAttribute("id");
+  <style>
+    html {
+      scroll-behavior: smooth;
     }
-  });
 
-  navLinks.forEach(link => {
-    link.classList.remove("active");
-    if (link.getAttribute("href") === "#" + current) {
-      link.classList.add("active");
+    #sidebar-nav .nav-link {
+      display: block;
+      padding: 0.4rem 0.6rem;
+      color: #333;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: all 0.2s ease;
     }
-  });
-});
-</script>
 
-<style>
-  .fancy-heading {
-    position: relative;
-    display: inline-block;
-    text-align: center;
-    font-size: 1.8rem; /* 可以调大或调小 */
-    font-weight: 600;
-    padding: 0.5rem 1.5rem;
-    margin: 2rem auto 1.5rem auto;
-    border-radius: 8px;
-    background: #fff;  /* 保证标题区域不会和线重叠 */
-  }
-  
-  .fancy-heading::before,
-  .fancy-heading::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    width: 120px;   /* 线条长度，可调 */
-    height: 2px;    /* 线条粗细 */
-    background: linear-gradient(to right, transparent, #aaa, transparent);
-  }
-  
-  .fancy-heading::before {
-    right: 100%;
-    margin-right: 15px;
-  }
-  
-  .fancy-heading::after {
-    left: 100%;
-    margin-left: 15px;
-  }
+    #sidebar-nav .nav-link:hover {
+      background: #f2f2f2;
+    }
+
+    #sidebar-nav .nav-link.active {
+      background: #333;
+      color: #fff;
+      font-weight: 600;
+    }
+  </style>
+
+  <script>
+    // 自动高亮当前 section
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll("#sidebar-nav .nav-link");
+
+    window.addEventListener("scroll", () => {
+      let current = "";
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (scrollY >= sectionTop) {
+          current = section.getAttribute("id");
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === "#" + current) {
+          link.classList.add("active");
+        }
+      });
+    });
+  </script>
+
+  <style>
+    .section-heading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 2rem 0 1.5rem 0;
+    }
+
+    .fancy-heading {
+      position: relative;
+      display: inline-block;
+      text-align: center;
+      font-size: 1.8rem;
+      /* 可以调大或调小 */
+      font-weight: 600;
+      padding: 0.5rem 1.5rem;
+      margin: 2rem auto 1.5rem auto;
+      border-radius: 8px;
+      background: #fff;
+      /* 保证标题区域不会和线重叠 */
+    }
+
+    .fancy-heading::before,
+    .fancy-heading::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 120px;
+      /* 线条长度，可调 */
+      height: 2px;
+      /* 线条粗细 */
+      background: linear-gradient(to right, transparent, #aaa, transparent);
+    }
+
+    .fancy-heading::before {
+      right: 100%;
+      margin-right: 15px;
+    }
+
+    .fancy-heading::after {
+      left: 100%;
+      margin-left: 15px;
+    }
   </style>
 
 
@@ -217,7 +229,7 @@ window.addEventListener("scroll", () => {
                     <span>BibTex</span>
                   </a>
                 </span>
-                
+
                 <!-- ArXiv abstract Link -->
               </div>
             </div>
@@ -228,17 +240,18 @@ window.addEventListener("scroll", () => {
     </div>
   </section>
 
-  <div class="content has-text-centered" style="font-size: 1.1rem; line-height: 1.6; overflow-wrap: anywhere; word-break: break-word; max-width: 800px; width: 100%; margin: 0 auto;">
+  <div class="content has-text-centered"
+    style="font-size: 1.1rem; line-height: 1.6; overflow-wrap: anywhere; word-break: break-word; max-width: 800px; width: 100%; margin: 0 auto;">
     <p style="margin:0;">
       <strong>News:</strong>
     </p>
-  
+
     <p style="margin:0.35rem 0 0;">
       <span style="font-weight: bold;">(07/24/2025)</span>
       🎉 First version of the project is released on
       <a href="https://arxiv.org/abs/2507.17307" target="_blank">arXiv</a>.
     </p>
-  
+
     <p style="margin:0.35rem 0 0;">
       <span style="font-weight: bold;">(09/27/2025)</span>
       📑 We release an updated version with more comprehensive experimental analysis of <b>R-Stitch</b>
@@ -246,7 +259,7 @@ window.addEventListener("scroll", () => {
       <a href="https://arxiv.org/abs/2507.17307" target="_blank">arXiv</a>.
     </p>
   </div>
-  
+
   <section class="section hero is-light">
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
@@ -282,10 +295,12 @@ window.addEventListener("scroll", () => {
 
   <section class="section">
     <div class="container is-max-desktop">
-      <h2 class="title is-3 has-text-centered fancy-heading" id="consistency"
-        style="margin-bottom: 1.5rem; border: 2px solid #ddd; padding: 0.5rem 1rem; border-radius: 8px; display:inline-block;">
-        Token-level Consistency and Speedup Analysis
-      </h2>
+      <div class="section-heading">
+        <h2 class="title is-3 has-text-centered fancy-heading" id="consistency"
+          style="margin-bottom: 1.5rem; border: 2px solid #ddd; padding: 0.5rem 1rem; border-radius: 8px; display:inline-block;">
+          Token-level Consistency and Speedup Analysis
+        </h2>
+      </div>
 
       <!-- 分析文字 -->
       <div class="content has-text-justified" style="font-size: 1rem; margin-bottom: 1.5rem;">
@@ -330,10 +345,12 @@ window.addEventListener("scroll", () => {
 
   <section class="section is-light">
     <div class="container is-max-desktop">
-      <h2 class="title is-3 has-text-centered fancy-heading" id="entropy"
-        style="margin-bottom: 1.5rem; border: 2px solid #ddd; padding: 0.5rem 1rem; border-radius: 8px; display:inline-block;">
-        Empirical Entropy Analysis
-      </h2>
+      <div class="section-heading">
+        <h2 class="title is-3 has-text-centered fancy-heading" id="entropy"
+          style="margin-bottom: 1.5rem; border: 2px solid #ddd; padding: 0.5rem 1rem; border-radius: 8px; display:inline-block;">
+          Empirical Entropy Analysis
+        </h2>
+      </div>
 
       <!-- 精简文字 -->
       <div class="content has-text-justified" style="font-size: 1rem; margin-bottom: 1.5rem;">
@@ -538,17 +555,20 @@ window.addEventListener("scroll", () => {
   <!-- ========== R-Stitch Methodology (self-contained, scoped) ========== -->
   <section id="rstitch-method" class="section">
     <div class="container is-max-desktop">
-      <h2 class="title is-3 has-text-centered fancy-heading" id="method"
-        style="margin-bottom: 0rem; border: 2px solid #ddd; padding: 0.45rem 0.9rem; border-radius: 8px; display:inline-block;">
-        Methodology
-      </h2>
+      <div class="section-heading">
+        <h2 class="title is-3 has-text-centered fancy-heading" id="method"
+          style="margin-bottom: 0rem; border: 2px solid #ddd; padding: 0.45rem 0.9rem; border-radius: 8px; display:inline-block;">
+          Methodology
+        </h2>
+      </div>
 
       <!-- Overview figure: always visible -->
       <figure class="has-text-centered" style="margin: 1.25rem 0 1.5rem 0;">
         <img src="static/images/cot_methodv2.png" alt="Overview of R-Stitch"
           style="max-width: 88%; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.12);">
         <figcaption style="margin-top:0.6rem; font-size:0.92rem; color:#555;">
-          <strong>Figure 3.</strong> Overview of <em>R-Stitch</em>: entropy-guided bidirectional decoding between SLM and
+          <strong>Figure 3.</strong> Overview of <em>R-Stitch</em>: entropy-guided bidirectional decoding between SLM
+          and
           LLM.
         </figcaption>
       </figure>
@@ -787,26 +807,27 @@ window.addEventListener("scroll", () => {
 
   <!-- End video carousel -->
 
-<section class="section is-light">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered fancy-heading" id="performance"
-        style="margin-bottom: 1.5rem; border: 2px solid #ddd; padding: 0.5rem 1rem; border-radius: 8px; display:inline-block;">
-      Performance on Math Reasoning Benchmarks
-    </h2>
+  <section class="section is-light">
+    <div class="container is-max-desktop">
+      <div class="section-heading">
+        <h2 class="title is-3 has-text-centered fancy-heading" id="performance"
+          style="margin-bottom: 1.5rem; border: 2px solid #ddd; padding: 0.5rem 1rem; border-radius: 8px; display:inline-block;">
+          Performance on Math Reasoning Benchmarks
+        </h2>
+      </div>
 
-    <!-- 图表截图 -->
-    <div class="has-text-centered" style="margin-top: 1.5rem;">
-      <img src="static/images/performance_math.png" 
-           alt="Main results on math reasoning benchmarks" 
-           style="max-width: 95%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
-      <p style="margin-top: 0.8rem; font-size: 0.9rem; color: #555;">
-        <b>Figure 3.</b> Main results on math reasoning benchmarks. 
-        R-Stitch achieves consistent speedups with minimal accuracy loss, 
-        especially at larger scales.
-      </p>
+      <!-- 图表截图 -->
+      <div class="has-text-centered" style="margin-top: 1.5rem;">
+        <img src="static/images/performance_math.png" alt="Main results on math reasoning benchmarks"
+          style="max-width: 95%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+        <p style="margin-top: 0.8rem; font-size: 0.9rem; color: #555;">
+          <b>Figure 3.</b> Main results on math reasoning benchmarks.
+          R-Stitch achieves consistent speedups with minimal accuracy loss,
+          especially at larger scales.
+        </p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
 
 
