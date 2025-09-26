@@ -147,7 +147,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Chain-of-thought (CoT) reasoning enhances the problem-solving capabilities of large language models by encouraging step-by-step intermediate reasoning during inference. While effective, CoT introduces substantial computational overhead due to its reliance on autoregressive decoding over long token sequences. Existing acceleration strategies either reduce sequence length through early stopping or compressive reward designs, or improve decoding speed via speculative decoding with smaller models. However, speculative decoding suffers from limited speedup when the agreement between small and large models is low, and fails to exploit the potential advantages of small models in producing concise intermediate reasoning. In this paper, we present R-Stitch, a token-level, confidence-based hybrid decoding framework that accelerates CoT inference by switching between a small language model (SLM) and a large language model (LLM) along the reasoning trajectory. R-Stitch uses the SLM to generate tokens by default and delegates to the LLM only when the SLM's confidence falls below a threshold. This design avoids full-sequence rollback and selectively invokes the LLM on uncertain steps, preserving both efficiency and answer quality. R-Stitch is model-agnostic, training-free, and compatible with standard decoding pipelines. Experiments on math reasoning benchmarks demonstrate that R-Stitch achieves up to 85\% reduction in inference latency with negligible accuracy drop, highlighting its practical effectiveness in accelerating CoT reasoning.
+            Chain-of-thought (CoT) enhances the problem-solving ability of large language models (LLMs) but incurs substantial inference cost due to long autoregressive trajectories. Existing acceleration strategies either shorten traces via early stopping or compression, or adopt speculative decoding with a smaller model. However, speculative decoding provides limited gains when model agreement is low and rigidly enforces token-level consistency, overlooking the observation that some smaller models, when correct, produce significantly more concise reasoning traces that could reduce inference length. We introduce <em>R-Stitch</em>, a training-free hybrid decoding framework that leverages token-level entropy as an uncertainty proxy to delegate computation between a small language model (SLM) and an LLM. Our analysis shows that high-entropy tokens are more likely to induce errors, motivating an entropy-guided routing strategy that lets the SLM efficiently handle low-entropy tokens while delegating uncertain ones to the LLM, thereby avoiding full rollbacks and preserving answer quality. We further extend this design with <em>R-Stitch<sup>+</sup></em>, which learns an adaptive routing policy to adjust the token budget dynamically beyond fixed thresholds. By jointly reducing per-token decoding complexity and the number of generated tokens, our method achieves substantial acceleration with negligible accuracy loss. Concretely, it attains peak speedups of <b>3.00×</b> on DeepSeek-R1-Distill-Qwen-7B, <b>3.85×</b> on 14B, and <b>4.10×</b> on QWQ-32B while maintaining accuracy comparable to full LLM decoding. Moreover, it naturally enables adaptive efficiency–accuracy trade-offs that can be tailored to diverse computational budgets without retraining. 
           </p>
         </div>
       </div>
@@ -155,23 +155,96 @@
   </div>
 </section>
 
+
 <!-- End image carousel -->
 <!-- Video carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container" style="max-width: 70%; margin: 0 auto;">
-      <h2 class="title is-3">Token-level Analysis</h2>
-      <div class="has-text-centered">
-      <figure class="image is-inline-block">
-        <img src="static/images/token_analysis.png" alt="Token-level Analysis">
-      </figure>
-      <figcaption>
-        <b>Token-level consistency and speedup analysis.</b> (a) shows the relationship between token-level consistency and decoding speedup across different LLM-SLM pairs on the AMC dataset. (b) presents the distribution of speedup ratios across individual samples from AMC. (c) illustrates the token counts for questions correctly answered by both the SLM and LLM.
-      </figcaption>
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-2 has-text-centered" style="margin-bottom: 2rem;">
+      Token-level Consistency and Speedup Analysis
+    </h2>
+
+    <!-- Intro text -->
+    <div class="content has-text-justified" style="font-size: 1.1rem;">
+      <p>
+        Speculative decoding has received considerable attention due to its potential for substantial speedups. However, its effectiveness critically depends on the <b>consistency between the small language model (SLM) and the large language model (LLM)</b>. We quantify this limitation using <i>token-level consistency</i>, defined as the percentage of tokens for which the SLM produces the same output as the LLM given an identical prefix.
+      </p>
+      <p>
+        Figure&nbsp;1 illustrates three aspects: (a) consistency–speedup trade-offs across different model pairs, (b) distribution of speedups across AMC samples, and (c) token length comparison for correctly answered questions. The results highlight that speculative decoding may suffer overheads when agreement is low, and fails to exploit the concise reasoning of SLMs effectively.
+      </p>
+    </div>
+
+    <!-- Carousel -->
+    <div class="carousel carousel-animated carousel-animate-slide" data-autoplay="false" style="margin-top: 2rem;">
+      <div class="carousel-container">
+
+        <!-- Slide 1 -->
+        <div class="carousel-item has-background is-active">
+          <div class="card" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <img src="static/images/motivation_consistency_with_upperbound.png" alt="Token-level consistency vs. speedup">
+              </figure>
+            </div>
+            <div class="card-content has-text-centered" style="font-size: 0.95rem;">
+              <b>(a)</b> Token-level consistency vs. speedup across LLMs.
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-item has-background">
+          <div class="card" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <img src="static/images/speedup_distribution_filtered.png" alt="Speedup distribution">
+              </figure>
+            </div>
+            <div class="card-content has-text-centered" style="font-size: 0.95rem;">
+              <b>(b)</b> Speedup distribution across AMC samples.
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="carousel-item has-background">
+          <div class="card" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <img src="static/images/token_length_bars.png" alt="Token usage comparison">
+              </figure>
+            </div>
+            <div class="card-content has-text-centered" style="font-size: 0.95rem;">
+              <b>(c)</b> Token usage by SLM vs. LLM on correct answers.
+            </div>
+          </div>
+        </div>
+
       </div>
+
+      <!-- Navigation -->
+      <div class="carousel-navigation is-overlay">
+        <div class="carousel-nav-left">
+          <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        </div>
+        <div class="carousel-nav-right">
+          <i class="fa fa-chevron-right" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Caption -->
+    <div class="has-text-centered" style="margin-top: 2rem; font-size: 1rem; color: #555;">
+      <b>Figure 1.</b> Token-level consistency and speedup analysis.  
+      (a) Consistency vs. speedup across model pairs.  
+      (b) Distribution of speedup ratios across AMC samples.  
+      (c) Token usage comparison between SLM and LLM on correct answers.
     </div>
   </div>
 </section>
+
+
+
 
 
 <!-- Video carousel -->
