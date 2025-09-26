@@ -399,7 +399,7 @@
 
 
 <!-- Video carousel -->
-<!-- ========== R-Stitch Methodology (self-contained, scoped) ========== -->
+<!-- Methodology Section (improved) -->
 <section id="rstitch-method" class="section">
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered"
@@ -407,7 +407,7 @@
       Methodology
     </h2>
 
-    <!-- Overview figure: always visible -->
+    <!-- Overview figure (always visible) -->
     <figure class="has-text-centered" style="margin: 1.25rem 0 1.5rem 0;">
       <img src="static/images/cot_methodv2.png"
            alt="Overview of R-Stitch"
@@ -417,19 +417,25 @@
       </figcaption>
     </figure>
 
-    <!-- Slider (cards) -->
+    <!-- Slider -->
     <div class="rst-method-wrapper" style="max-width:920px; margin: 0 auto;">
-      <div class="rst-method-slider" style="position:relative; width:100%; height:360px;">
-
+      <div class="rst-method-slider" style="position:relative; width:100%; height:480px;">
+        
         <!-- Card 1 -->
         <article class="rst-method-card" data-index="0">
           <div class="rst-card-inner">
             <h3 class="title is-5 has-text-centered">R-Stitch — Entropy-Guided Decoding</h3>
             <p>
-              R-Stitch uses token entropy as an uncertainty proxy to route decoding between a small
-              model (SLM) and a large model (LLM). The SLM decodes low-entropy tokens to reduce latency;
-              tokens exceeding a threshold are delegated to the LLM. Control may return to the SLM when
-              entropy decreases, enabling a bidirectional switching policy that trades off efficiency and reliability.
+              R-Stitch is a collaborative decoding framework that leverages <em>entropy</em> as an
+              uncertainty signal. The small language model (SLM) begins decoding to reduce latency.
+              When the entropy of its predicted token is below a threshold, the token is accepted.
+              Otherwise, the token is discarded and recomputed by the large model (LLM).
+            </p>
+            <p>
+              This mechanism is <strong>bidirectional</strong>: once the LLM outputs low-entropy tokens,
+              control returns to the SLM, ensuring efficiency while preserving reliability.
+              The approach explicitly exploits complementary strengths of SLM and LLM, balancing
+              cost and accuracy at token-level granularity.
             </p>
           </div>
         </article>
@@ -439,150 +445,48 @@
           <div class="rst-card-inner">
             <h3 class="title is-5 has-text-centered">R-Stitch<sup>+</sup> — RL-based Adaptive Routing</h3>
             <p>
-              R-Stitch<sup>+</sup> adds a lightweight RL router to make adaptive switching decisions beyond fixed thresholds.
-              The router optimizes a combined accuracy/latency objective via a latency-aware reward and cost estimator,
-              enabling tunable efficiency–accuracy trade-offs without modifying the underlying LMs.
+              R-Stitch<sup>+</sup> extends the entropy-based routing with a lightweight reinforcement
+              learning (RL) router. Instead of using a fixed threshold, the router decides adaptively
+              whether to keep decoding with the SLM or switch to the LLM when entropy is high.
+            </p>
+            <p>
+              The router is trained with a <strong>latency-aware reward</strong> that combines correctness
+              and efficiency. A simple cost model estimates trajectory latency from the number of tokens
+              and cache size, avoiding costly wall-clock profiling. This allows the policy to achieve
+              tunable efficiency–accuracy trade-offs beyond rule-based thresholds.
             </p>
           </div>
         </article>
 
-        <!-- Card 3 (algorithm figure placeholder) -->
+        <!-- Card 3 (Algorithm figure) -->
         <article class="rst-method-card" data-index="2">
           <div class="rst-card-inner" style="text-align:center;">
             <h3 class="title is-5">Algorithm Flow</h3>
             <img src="static/images/rstitch_algo.png" alt="R-Stitch Algorithm Flow"
-                 style="max-width:78%; margin-top:0.6rem; border-radius:8px; box-shadow:0 3px 10px rgba(0,0,0,0.08);">
+                 style="max-width:90%; margin-top:0.6rem; border-radius:8px; box-shadow:0 3px 10px rgba(0,0,0,0.08);">
             <p style="margin-top:0.6rem; font-size:0.9rem; color:#555;">
-              Flowchart of the proposed R-Stitch algorithm. (Replace image with your final figure.)
+              Flowchart of the proposed R-Stitch algorithm. (Replace with your finalized figure.)
             </p>
           </div>
         </article>
 
-        <!-- Prev/Next buttons (inside the slider container) -->
+        <!-- Buttons + Dots -->
         <button class="rst-btn rst-prev" aria-label="Previous">◀</button>
         <button class="rst-btn rst-next" aria-label="Next">▶</button>
-
-        <!-- Dots indicator -->
-        <div class="rst-dots" aria-hidden="false"></div>
+        <div class="rst-dots"></div>
       </div>
     </div>
   </div>
 </section>
 
 <style>
-  /* Scoped to #rstitch-method to avoid conflicts */
-  #rstitch-method .rst-method-slider { position: relative; }
-  #rstitch-method .rst-method-card {
-    position: absolute;
-    inset: 0;                    /* top:0; right:0; bottom:0; left:0 */
-    display: none;
-    padding: 1rem;
-    box-sizing: border-box;
-  }
+  #rstitch-method .rst-method-slider { height: 480px; } /* ✅ higher */
   #rstitch-method .rst-method-card .rst-card-inner {
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-    background: #ffffff;
-    border-radius: 10px;
-    height: calc(100% - 12px);
-    padding: 1.15rem 1.25rem;
-    box-shadow: 0 6px 18px rgba(20,20,20,0.06);
+    height: calc(100% - 12px); 
     overflow-y: auto;
   }
-  #rstitch-method .rst-method-card.rst-active { display: block; }
-
-  /* Buttons */
-  #rstitch-method .rst-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 40px; height: 40px; border-radius: 50%;
-    border: none;
-    background: rgba(255,255,255,0.95);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-    cursor: pointer; z-index: 60;
-    font-size: 16px;
-  }
-  #rstitch-method .rst-prev { left: 6px; }
-  #rstitch-method .rst-next { right: 6px; }
-  @media (min-width:1200px) {
-    /* slightly pull buttons outwards on very wide screens */
-    #rstitch-method .rst-prev { left: -40px; }
-    #rstitch-method .rst-next { right: -40px; }
-  }
-  #rstitch-method .rst-btn:hover { background: #fff; }
-
-  /* Dots */
-  #rstitch-method .rst-dots {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    display:flex;
-    gap:8px;
-    z-index: 60;
-  }
-  #rstitch-method .rst-dot {
-    width:9px; height:9px; border-radius:50%;
-    background:#cfcfcf; cursor:pointer;
-  }
-  #rstitch-method .rst-dot.rst-dot-active { background:#333; }
-
-  /* typography tweaks */
-  #rstitch-method .rst-card-inner p { line-height:1.55; color:#222; font-size:0.98rem; }
-  #rstitch-method .rst-card-inner h3.title { margin-bottom: 0.5rem; font-weight:600; }
 </style>
 
-<script>
-document.addEventListener('DOMContentLoaded', function(){
-  const root = document.getElementById('rstitch-method');
-  if(!root) return;
-
-  const slides = Array.from(root.querySelectorAll('.rst-method-card'));
-  const prev = root.querySelector('.rst-prev');
-  const next = root.querySelector('.rst-next');
-  const dotsContainer = root.querySelector('.rst-dots');
-
-  if(!slides.length) return;
-
-  // build dots
-  slides.forEach((_, i)=>{
-    const d = document.createElement('button');
-    d.type = 'button';
-    d.className = 'rst-dot';
-    d.setAttribute('aria-label', 'Go to slide ' + (i+1));
-    d.addEventListener('click', ()=> show(i));
-    dotsContainer.appendChild(d);
-  });
-
-  const dots = Array.from(dotsContainer.children);
-
-  let idx = 0;
-  function show(n){
-    idx = (n + slides.length) % slides.length;
-    slides.forEach((s,i)=> {
-      s.classList.toggle('rst-active', i === idx);
-    });
-    dots.forEach((d,i)=> d.classList.toggle('rst-dot-active', i === idx));
-  }
-
-  prev.addEventListener('click', ()=> show(idx - 1));
-  next.addEventListener('click', ()=> show(idx + 1));
-
-  // initial
-  show(0);
-
-  // optional: keyboard navigation
-  root.addEventListener('keydown', (e)=>{
-    if(e.key === 'ArrowLeft') prev.click();
-    if(e.key === 'ArrowRight') next.click();
-  });
-
-  // make sure the slider container can receive keyboard focus for accessibility
-  root.setAttribute('tabindex','-1');
-});
-</script>
 <!-- ========== end rstitch-method block ========== -->
 
 
