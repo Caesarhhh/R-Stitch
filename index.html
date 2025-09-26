@@ -161,30 +161,48 @@
 
 <section class="section">
   <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered" style="margin-bottom: 1.5rem; border: 2px solid #ddd; padding: 0.5rem 1rem; border-radius: 8px; display:inline-block;">
+    <h2 class="title is-3 has-text-centered" 
+        style="margin-bottom: 1.5rem; border: 2px solid #ddd; padding: 0.5rem 1rem; border-radius: 8px; display:inline-block;">
       Token-level Consistency and Speedup Analysis
     </h2>
 
+    <!-- 分析文字 -->
+    <div class="content has-text-justified" style="font-size: 1rem; margin-bottom: 1.5rem;">
+      <p>
+        Speculative decoding has received considerable attention due to its potential for substantial speedups. 
+        However, its effectiveness critically depends on the <b>consistency between the small language model (SLM) 
+        and the large language model (LLM)</b>. We quantify this limitation using <i>token-level consistency</i>, 
+        defined as the percentage of tokens for which the SLM produces the same output as the LLM given an identical prefix.
+      </p>
+      <p>
+        Figure&nbsp;1 illustrates three aspects: (a) consistency–speedup trade-offs across different model pairs, 
+        (b) distribution of speedups across AMC samples, and (c) token length comparison for correctly answered questions. 
+        The results highlight that speculative decoding may suffer overheads when agreement is low, 
+        and fails to exploit the concise reasoning of SLMs effectively.
+      </p>
+    </div>
+
+    <!-- Slider -->
     <div class="slider-token-wrapper" style="position: relative; height: 480px; overflow: visible; margin-top: 2rem;">
-      <!-- Slide 1 -->
       <div class="slide-token">
-        <img src="static/images/motivation_consistency_with_upperbound.png" alt="Token-level consistency vs. speedup">
+        <img src="static/images/motivation_consistency_with_upperbound.png" 
+             alt="Token-level consistency vs. speedup">
         <p><b>(a)</b> Token-level consistency vs. speedup across LLMs.</p>
       </div>
-      <!-- Slide 2 -->
       <div class="slide-token">
-        <img src="static/images/speedup_distribution_filtered.png" alt="Speedup distribution">
+        <img src="static/images/speedup_distribution_filtered.png" 
+             alt="Speedup distribution">
         <p><b>(b)</b> Speedup distribution across AMC samples.</p>
       </div>
-      <!-- Slide 3 -->
       <div class="slide-token">
-        <img src="static/images/token_length_bars.png" alt="Token usage comparison">
+        <img src="static/images/token_length_bars.png" 
+             alt="Token usage comparison">
         <p><b>(c)</b> Token usage by SLM vs. LLM.</p>
       </div>
 
       <!-- Nav -->
-      <button onclick="prevSlideToken()" style="position:absolute; top:50%; left:10px;">◀</button>
-      <button onclick="nextSlideToken()" style="position:absolute; top:50%; right:10px;">▶</button>
+      <button onclick="prevSlideToken()">◀</button>
+      <button onclick="nextSlideToken()">▶</button>
     </div>
   </div>
 </section>
@@ -192,33 +210,63 @@
 
 <section class="section">
   <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered" style="margin-bottom: 1.5rem; border: 2px solid #ddd; padding: 0.5rem 1rem; border-radius: 8px; display:inline-block;">
+    <h2 class="title is-3 has-text-centered" 
+        style="margin-bottom: 1.5rem; border: 2px solid #ddd; padding: 0.5rem 1rem; border-radius: 8px; display:inline-block;">
       Empirical Entropy Analysis
     </h2>
 
-    <div class="slider-entropy-wrapper" style="position: relative; height: 420px; overflow: hidden; margin-top: 2rem;">
-      <!-- Slide 1 -->
+    <!-- 分析文字 -->
+    <div class="content has-text-justified" style="font-size: 1rem; margin-bottom: 1.5rem;">
+      <p>
+        LLMs exhibit stronger reasoning capabilities but incur substantially higher inference costs compared to SLMs. 
+        Prior work shows that when the two models produce consistent outputs, delegating computation to the SLM can 
+        effectively reduce latency. This raises a fundamental question: under what conditions can SLM predictions 
+        be relied upon without compromising correctness? To answer this, we conduct sample- and token-level entropy 
+        analyses on AMC using DeepSeek-R1-Distill-Qwen-7B (LLM) and L1-1.5B-Short (SLM), which reveal systematic patterns of entropy.
+      </p>
+
+      <p><b>1. Incorrect answers are associated with higher entropy.</b><br>
+        On AMC, the mean entropy over all generated tokens in incorrect reasoning traces is higher than that in correct traces (Figure&nbsp;2a). 
+        In the violin plots, the width of each curve indicates the proportion of tokens within an entropy range. 
+        <i>Traces with higher average entropy are more likely to lead to incorrect answers, supporting the use of entropy as a practical uncertainty signal.</i>
+      </p>
+
+      <p><b>2. Most tokens are generated with extremely low entropy.</b><br>
+        As shown in Figure&nbsp;2b, the distribution is heavily skewed toward zero: only 10.65% of SLM-generated tokens exceed an entropy of 0.1, 
+        and the majority have entropy exactly 0, indicating very high prediction confidence. 
+        <i>High-entropy tokens are relatively rare within a sequence.</i>
+      </p>
+
+      <p><b>3. High-entropy tokens are more likely to trigger errors.</b><br>
+        We analyze AMC problems where the LLM produces the correct solution but the SLM does not. 
+        As shown in Figure&nbsp;2c, the neighborhood preceding the first harmful token exhibits higher mean entropy 
+        than the overall distribution. 
+        <i>High-entropy tokens are more likely to precede and trigger harmful tokens, making them useful signals for routing.</i>
+      </p>
+    </div>
+
+    <!-- Slider -->
+    <div class="slider-entropy-wrapper" style="position: relative; height: 480px; overflow: visible; margin-top: 2rem;">
       <div class="slide-entropy">
         <img src="static/images/motivation/entropy_amc.png" alt="Entropy AMC">
         <p><b>(a)</b> Sample-level entropy in correct vs. incorrect solutions.</p>
       </div>
-      <!-- Slide 2 -->
       <div class="slide-entropy">
         <img src="static/images/motivation/token_entropys.png" alt="Token entropy distribution">
         <p><b>(b)</b> Token-level entropy distribution across traces.</p>
       </div>
-      <!-- Slide 3 -->
       <div class="slide-entropy">
         <img src="static/images/motivation/entropy_neighborhood.png" alt="Entropy neighborhood">
         <p><b>(c)</b> Elevated entropy around first harmful token.</p>
       </div>
 
       <!-- Nav -->
-      <button onclick="prevSlideEntropy()" style="position:absolute; top:50%; left:10px;">◀</button>
-      <button onclick="nextSlideEntropy()" style="position:absolute; top:50%; right:10px;">▶</button>
+      <button onclick="prevSlideEntropy()">◀</button>
+      <button onclick="nextSlideEntropy()">▶</button>
     </div>
   </div>
 </section>
+
 
 
 <style>
