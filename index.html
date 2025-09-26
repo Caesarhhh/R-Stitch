@@ -439,13 +439,24 @@
 <style>
 .method-slider {
   position: relative;
+  display: flex;
+  align-items: center;   /* 垂直居中 */
+  justify-content: center; /* 水平居中 */
+  min-height: 420px;     /* 给一个固定高度 */
+  overflow: hidden;
 }
+
 .method-slide {
   display: none;
+  width: 80%;           /* 卡片宽度，自己调 */
+  max-width: 700px;
+  margin: 0 auto;       /* 水平居中 */
 }
+
 .method-slide.active {
-  display: block;
+  display: block;       /* 只显示当前 */
 }
+
 
 /* 按钮 */
 .method-slider button {
