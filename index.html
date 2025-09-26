@@ -172,33 +172,37 @@
       </p>
     </div>
 
-    <!-- Coverflow carousel -->
-    <div class="coverflow-wrapper" style="position: relative; width: 100%; max-width: 900px; margin: 2rem auto; overflow: hidden;">
-      <div class="coverflow" style="display: flex; justify-content: center; align-items: center; position: relative;">
+    <!-- Coverflow Slider -->
+    <div class="slider-wrapper" style="position: relative; width: 100%; max-width: 900px; margin: 2rem auto; overflow: hidden;">
+      <div class="slider" style="position: relative; height: 500px;">
 
         <!-- Slide 1 -->
-        <div class="coverflow-item">
+        <div class="slide">
           <img src="static/images/motivation_consistency_with_upperbound.png" alt="Token-level consistency vs. speedup">
           <p><b>(a)</b> Token-level consistency vs. speedup across LLMs.</p>
         </div>
 
         <!-- Slide 2 -->
-        <div class="coverflow-item">
+        <div class="slide">
           <img src="static/images/speedup_distribution_filtered.png" alt="Speedup distribution">
           <p><b>(b)</b> Speedup distribution across AMC samples.</p>
         </div>
 
         <!-- Slide 3 -->
-        <div class="coverflow-item">
+        <div class="slide">
           <img src="static/images/token_length_bars.png" alt="Token usage comparison">
           <p><b>(c)</b> Token usage by SLM vs. LLM on correct answers.</p>
         </div>
 
       </div>
 
-      <!-- Arrows -->
-      <button onclick="prevCover()" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; border-radius: 50%; width: 36px; height: 36px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.2);">◀</button>
-      <button onclick="nextCover()" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; border-radius: 50%; width: 36px; height: 36px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.2);">▶</button>
+      <!-- Navigation arrows -->
+      <button onclick="prevSlide()" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; border-radius: 50%; width: 36px; height: 36px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.2); z-index: 10;">
+        ◀
+      </button>
+      <button onclick="nextSlide()" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; border-radius: 50%; width: 36px; height: 36px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.2); z-index: 10;">
+        ▶
+      </button>
     </div>
 
     <!-- Caption -->
@@ -212,65 +216,74 @@
 </section>
 
 <style>
-  .coverflow-item {
+  .slide {
     position: absolute;
-    transition: all 0.6s ease;
+    top: 0;
+    left: 50%;
+    width: 70%;
     text-align: center;
+    transition: all 0.6s ease;
+    opacity: 0;
+    transform: translateX(-50%) scale(0.7);
+    z-index: 0;
   }
-  .coverflow-item img {
-    max-width: 70%;
+  .slide img {
+    max-width: 100%;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   }
-  .coverflow-item p {
-    margin-top: 0.5rem;
+  .slide p {
+    margin-top: 0.6rem;
     font-size: 0.9rem;
+  }
+  .slide.active {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+    z-index: 3;
+  }
+  .slide.left {
+    opacity: 0.6;
+    transform: translateX(-150%) scale(0.85);
+    z-index: 2;
+  }
+  .slide.right {
+    opacity: 0.6;
+    transform: translateX(50%) scale(0.85);
+    z-index: 2;
   }
 </style>
 
 <script>
-  const items = document.querySelectorAll('.coverflow-item');
-  let current = 0;
+  window.addEventListener("DOMContentLoaded", () => {
+    let currentIndex = 0;
+    const slides = document.querySelectorAll('.slide');
 
-  function updateCoverflow() {
-    items.forEach((item, i) => {
-      item.style.opacity = "0";
-      item.style.zIndex = "0";
-      item.style.transform = "translateX(0) scale(0.7)";
-    });
+    function updateSlides() {
+      slides.forEach((slide, i) => {
+        slide.classList.remove("active", "left", "right");
+        if (i === currentIndex) {
+          slide.classList.add("active");
+        } else if (i === (currentIndex - 1 + slides.length) % slides.length) {
+          slide.classList.add("left");
+        } else if (i === (currentIndex + 1) % slides.length) {
+          slide.classList.add("right");
+        }
+      });
+    }
 
-    const total = items.length;
-    const left = (current - 1 + total) % total;
-    const right = (current + 1) % total;
+    window.prevSlide = function () {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+      updateSlides();
+    }
 
-    // 中间
-    items[current].style.opacity = "1";
-    items[current].style.zIndex = "3";
-    items[current].style.transform = "translateX(0) scale(1)";
+    window.nextSlide = function () {
+      currentIndex = (currentIndex + 1) % slides.length;
+      updateSlides();
+    }
 
-    // 左边
-    items[left].style.opacity = "0.5";
-    items[left].style.zIndex = "2";
-    items[left].style.transform = "translateX(-120%) scale(0.85)";
-
-    // 右边
-    items[right].style.opacity = "0.5";
-    items[right].style.zIndex = "2";
-    items[right].style.transform = "translateX(120%) scale(0.85)";
-  }
-
-  function prevCover() {
-    current = (current - 1 + items.length) % items.length;
-    updateCoverflow();
-  }
-
-  function nextCover() {
-    current = (current + 1) % items.length;
-    updateCoverflow();
-  }
-
-  // 初始化
-  updateCoverflow();
+    // 初始化
+    updateSlides();
+  });
 </script>
 
 
