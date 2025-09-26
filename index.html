@@ -109,7 +109,39 @@ window.addEventListener("scroll", () => {
 });
 </script>
 
-
+<style>
+  .fancy-heading {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    font-size: 1.8rem; /* 可以调大或调小 */
+    font-weight: 600;
+    padding: 0.5rem 1.5rem;
+    margin: 2rem auto 1.5rem auto;
+    border-radius: 8px;
+    background: #fff;  /* 保证标题区域不会和线重叠 */
+  }
+  
+  .fancy-heading::before,
+  .fancy-heading::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 120px;   /* 线条长度，可调 */
+    height: 2px;    /* 线条粗细 */
+    background: linear-gradient(to right, transparent, #aaa, transparent);
+  }
+  
+  .fancy-heading::before {
+    right: 100%;
+    margin-right: 15px;
+  }
+  
+  .fancy-heading::after {
+    left: 100%;
+    margin-left: 15px;
+  }
+  </style>
 
 
   <!-- Image carousel -->
@@ -250,7 +282,7 @@ window.addEventListener("scroll", () => {
 
   <section class="section">
     <div class="container is-max-desktop">
-      <h2 class="title is-3 has-text-centered" id="consistency"
+      <h2 class="title is-3 has-text-centered fancy-heading" id="consistency"
         style="margin-bottom: 1.5rem; border: 2px solid #ddd; padding: 0.5rem 1rem; border-radius: 8px; display:inline-block;">
         Token-level Consistency and Speedup Analysis
       </h2>
@@ -298,7 +330,7 @@ window.addEventListener("scroll", () => {
 
   <section class="section is-light">
     <div class="container is-max-desktop">
-      <h2 class="title is-3 has-text-centered" id="entropy"
+      <h2 class="title is-3 has-text-centered fancy-heading" id="entropy"
         style="margin-bottom: 1.5rem; border: 2px solid #ddd; padding: 0.5rem 1rem; border-radius: 8px; display:inline-block;">
         Empirical Entropy Analysis
       </h2>
@@ -506,7 +538,7 @@ window.addEventListener("scroll", () => {
   <!-- ========== R-Stitch Methodology (self-contained, scoped) ========== -->
   <section id="rstitch-method" class="section">
     <div class="container is-max-desktop">
-      <h2 class="title is-3 has-text-centered" id="method"
+      <h2 class="title is-3 has-text-centered fancy-heading" id="method"
         style="margin-bottom: 0rem; border: 2px solid #ddd; padding: 0.45rem 0.9rem; border-radius: 8px; display:inline-block;">
         Methodology
       </h2>
@@ -757,7 +789,7 @@ window.addEventListener("scroll", () => {
 
 <section class="section is-light">
   <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered" id="performance"
+    <h2 class="title is-3 has-text-centered fancy-heading" id="performance"
         style="margin-bottom: 1.5rem; border: 2px solid #ddd; padding: 0.5rem 1rem; border-radius: 8px; display:inline-block;">
       Performance on Math Reasoning Benchmarks
     </h2>
