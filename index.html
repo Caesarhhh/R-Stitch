@@ -690,30 +690,6 @@
       Performance on Math Reasoning Benchmarks
     </h2>
 
-    <!-- 描述文字 -->
-    <div class="content has-text-justified" style="font-size: 1rem; margin-bottom: 1.5rem;">
-      <p>
-        We evaluate <b>R-Stitch</b> under entropy thresholds 
-        <i>τ</i> ∈ {0.001, 0.02, 0.03}, comparing against 
-        SLM-only decoding, full LLM decoding, and speculative decoding (SpecDec). 
-      </p>
-      <p>
-        Overall, <b>R-Stitch consistently reduces latency with minimal accuracy degradation</b> 
-        relative to full LLM decoding. At <i>τ</i>=0.02, 
-        LLM-7B achieves 1.4×–2.3× speedups at 8k and 1.7×–2.9× at 16k tokens. 
-        Larger models benefit more: LLM-14B yields up to 3.0× at 16k, 
-        while LLM-32B reaches 4.8×. At a more aggressive threshold (<i>τ</i>=0.03), 
-        speedups increase further, with moderate accuracy loss.
-      </p>
-      <p>
-        In contrast, SpecDec often underperforms: low agreement between SLM and LLM 
-        causes frequent token rejections, introducing overhead that sometimes 
-        makes it slower than plain LLM decoding. 
-        SLM-only decoding is fastest but suffers large accuracy drops, 
-        underscoring the need for hybrid strategies.
-      </p>
-    </div>
-
     <!-- 图表截图 -->
     <div class="has-text-centered" style="margin-top: 1.5rem;">
       <img src="static/images/performance_math.png" 
