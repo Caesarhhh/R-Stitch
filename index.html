@@ -47,115 +47,6 @@
 <body>
 
 
-
-
-
-<!-- Image carousel -->
-<section class="hero">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">R-Stitch: Dynamic Trajectory Stitching for Efficient Reasoning</h1>
-          <div class="is-size-5 publication-authors">
-            <!-- Paper authors -->
-            <span class="author-block">
-              <a href="mailto:caesard216@gmail.com" target="_blank">Zhuokun Chen</a><sup>1*</sup>,
-            </span>
-            <span class="author-block">
-              <a href="#" target="_blank">Zeren Chen</a><sup>2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="#" target="_blank">Jiahao He</a><sup>4</sup>,
-            </span>
-            <span class="author-block">
-              <a href="#" target="_blank">Mingkui Tan</a><sup>3</sup>,
-            </span>
-            <span class="author-block">
-              <a href="#" target="_blank">Jianfei Cai</a><sup>1</sup>,
-            </span>
-            <span class="author-block">
-              <a href="mailto:bohan.zhuang@gmail.com" target="_blank">Bohan Zhuang</a><sup>4†</sup>
-            </span>
-          </div>
-
-          <div class="is-size-5 publication-authors">
-            <span class="author-block">
-              <sup>1</sup> Monash University &nbsp;&nbsp;
-              <sup>2</sup> School of Software, Beihang University &nbsp;&nbsp;
-              <sup>3</sup> South China University of Technology &nbsp;&nbsp;
-              <sup>4</sup> ZIP Lab, Zhejiang University
-            </span>
-            <span class="eql-cntrb"><small>Email: caesard216@gmail.com, bohan.zhuang@gmail.com</small></span>
-          </div>
-
-          <div class="column has-text-centered">
-            <div class="publication-links">
-              <!-- Arxiv PDF link -->
-              <span class="link-block">
-                <a href="https://arxiv.org/abs/2507.17307" target="_blank"
-                  class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                    <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span>
-              
-
-              <!-- Github link -->
-              <span class="link-block">
-                <a href="https://github.com/Caesarhhh/R_Stitch" target="_blank"
-                  class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                    <i class="fab fa-github"></i>
-                  </span>
-                  <span>Code</span>
-                </a>
-              </span>
-              
-              <span class="link-block">
-                <a href="https://scholar.googleusercontent.com/scholar.bib?q=info:L-aXZ6FU0VYJ:scholar.google.com/&output=citation&scisdr=CgIBXavQENivsT6gox0:AAZF9b8AAAAAaIWmux1fNZ6UnwDxaQkLs1214k4&scisig=AAZF9b8AAAAAaIWmuxkLjAKSxtpVwuQin0mfxMw&scisf=4&ct=citation&cd=-1&hl=zh-CN" target="_blank"
-                  class="external-link button is-normal is-rounded is-dark">
-                  <span>BibTex</span>
-                </a>
-              </span>
-              <!-- ArXiv abstract Link -->
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="content has-text-centered" style="font-size: 1.1rem;">
-  <p>
-    <strong>News:</strong><br>
-    <span style="font-weight: bold;">(07/24/2025)</span> 🎉 First version of the project is released on 
-    <a href="https://arxiv.org/abs/2507.17307" target="_blank">arXiv</a>.
-  </p>
-</div>
-
-
-
-<section class="section hero is-light">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            Chain-of-thought (CoT) enhances the problem-solving ability of large language models (LLMs) but incurs substantial inference cost due to long autoregressive trajectories. Existing acceleration strategies either shorten traces via early stopping or compression, or adopt speculative decoding with a smaller model. However, speculative decoding provides limited gains when model agreement is low and rigidly enforces token-level consistency, overlooking the observation that some smaller models, when correct, produce significantly more concise reasoning traces that could reduce inference length. We introduce <em>R-Stitch</em>, a training-free hybrid decoding framework that leverages token-level entropy as an uncertainty proxy to delegate computation between a small language model (SLM) and an LLM. Our analysis shows that high-entropy tokens are more likely to induce errors, motivating an entropy-guided routing strategy that lets the SLM efficiently handle low-entropy tokens while delegating uncertain ones to the LLM, thereby avoiding full rollbacks and preserving answer quality. We further extend this design with <em>R-Stitch<sup>+</sup></em>, which learns an adaptive routing policy to adjust the token budget dynamically beyond fixed thresholds. By jointly reducing per-token decoding complexity and the number of generated tokens, our method achieves substantial acceleration with negligible accuracy loss. Concretely, it attains peak speedups of <b>3.00×</b> on DeepSeek-R1-Distill-Qwen-7B, <b>3.85×</b> on 14B, and <b>4.10×</b> on QWQ-32B while maintaining accuracy comparable to full LLM decoding. Moreover, it naturally enables adaptive efficiency–accuracy trade-offs that can be tailored to diverse computational budgets without retraining. 
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
 <section class="section">
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered" style="margin-bottom: 1.5rem;">
@@ -172,44 +63,33 @@
       </p>
     </div>
 
-    <!-- Coverflow Slider -->
-    <div class="slider-wrapper" style="position: relative; overflow: hidden; width: 100%; max-width: 900px; margin: 2rem auto;">
-      <div class="slider" style="display: flex; transition: transform 0.6s ease; justify-content: center; align-items: center;">
+    <!-- Coverflow carousel -->
+    <div class="coverflow-wrapper" style="position: relative; width: 100%; max-width: 900px; margin: 2rem auto; overflow: hidden;">
+      <div class="coverflow" style="display: flex; justify-content: center; align-items: center; position: relative;">
 
         <!-- Slide 1 -->
-        <div class="slide" style="flex: 0 0 70%; text-align: center; opacity: 0.5; transform: scale(0.85); transition: all 0.6s ease;">
-          <img src="static/images/motivation_consistency_with_upperbound.png" alt="Token-level consistency vs. speedup" style="max-width: 70%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
-          <p style="margin-top: 0.6rem; font-size: 0.9rem;"><b>(a)</b> Token-level consistency vs. speedup across LLMs.</p>
+        <div class="coverflow-item">
+          <img src="static/images/motivation_consistency_with_upperbound.png" alt="Token-level consistency vs. speedup">
+          <p><b>(a)</b> Token-level consistency vs. speedup across LLMs.</p>
         </div>
 
         <!-- Slide 2 -->
-        <div class="slide" style="flex: 0 0 70%; text-align: center; opacity: 1; transform: scale(1); transition: all 0.6s ease;">
-          <img src="static/images/speedup_distribution_filtered.png" alt="Speedup distribution" style="max-width: 70%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
-          <p style="margin-top: 0.6rem; font-size: 0.9rem;"><b>(b)</b> Speedup distribution across AMC samples.</p>
+        <div class="coverflow-item">
+          <img src="static/images/speedup_distribution_filtered.png" alt="Speedup distribution">
+          <p><b>(b)</b> Speedup distribution across AMC samples.</p>
         </div>
 
         <!-- Slide 3 -->
-        <div class="slide" style="flex: 0 0 70%; text-align: center; opacity: 0.5; transform: scale(0.85); transition: all 0.6s ease;">
-          <img src="static/images/token_length_bars.png" alt="Token usage comparison" style="max-width: 70%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
-          <p style="margin-top: 0.6rem; font-size: 0.9rem;"><b>(c)</b> Token usage by SLM vs. LLM on correct answers.</p>
+        <div class="coverflow-item">
+          <img src="static/images/token_length_bars.png" alt="Token usage comparison">
+          <p><b>(c)</b> Token usage by SLM vs. LLM on correct answers.</p>
         </div>
 
       </div>
 
-      <!-- Navigation arrows -->
-      <button onclick="prevSlide()" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); background: rgba(255,255,255,0.85); border: none; border-radius: 50%; width: 36px; height: 36px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
-        ◀
-      </button>
-      <button onclick="nextSlide()" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); background: rgba(255,255,255,0.85); border: none; border-radius: 50%; width: 36px; height: 36px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
-        ▶
-      </button>
-
-      <!-- Dots -->
-      <div class="dots" style="text-align: center; margin-top: 1rem;">
-        <span class="dot" onclick="showSlide(0)" style="cursor:pointer; height: 10px; width: 10px; margin: 0 5px; background-color: #bbb; border-radius: 50%; display: inline-block;"></span>
-        <span class="dot" onclick="showSlide(1)" style="cursor:pointer; height: 10px; width: 10px; margin: 0 5px; background-color: #bbb; border-radius: 50%; display: inline-block;"></span>
-        <span class="dot" onclick="showSlide(2)" style="cursor:pointer; height: 10px; width: 10px; margin: 0 5px; background-color: #bbb; border-radius: 50%; display: inline-block;"></span>
-      </div>
+      <!-- Arrows -->
+      <button onclick="prevCover()" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; border-radius: 50%; width: 36px; height: 36px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.2);">◀</button>
+      <button onclick="nextCover()" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; border-radius: 50%; width: 36px; height: 36px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.2);">▶</button>
     </div>
 
     <!-- Caption -->
@@ -222,47 +102,67 @@
   </div>
 </section>
 
+<style>
+  .coverflow-item {
+    position: absolute;
+    transition: all 0.6s ease;
+    text-align: center;
+  }
+  .coverflow-item img {
+    max-width: 70%;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+  .coverflow-item p {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+  }
+</style>
+
 <script>
-  let currentIndex = 1; // 默认第二张在中间
-  const slides = document.querySelectorAll('.slide');
-  const slider = document.querySelector('.slider');
-  const dots = document.querySelectorAll('.dot');
+  const items = document.querySelectorAll('.coverflow-item');
+  let current = 0;
 
-  function updateSlides() {
-    slides.forEach((slide, i) => {
-      if (i === currentIndex) {
-        slide.style.opacity = "1";
-        slide.style.transform = "scale(1)";
-      } else {
-        slide.style.opacity = "0.5";
-        slide.style.transform = "scale(0.85)";
-      }
+  function updateCoverflow() {
+    items.forEach((item, i) => {
+      item.style.opacity = "0";
+      item.style.zIndex = "0";
+      item.style.transform = "translateX(0) scale(0.7)";
     });
-    dots.forEach((dot, i) => {
-      dot.style.backgroundColor = (i === currentIndex) ? '#333' : '#bbb';
-    });
-    // 平移居中当前 slide
-    slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+    const total = items.length;
+    const left = (current - 1 + total) % total;
+    const right = (current + 1) % total;
+
+    // 中间
+    items[current].style.opacity = "1";
+    items[current].style.zIndex = "3";
+    items[current].style.transform = "translateX(0) scale(1)";
+
+    // 左边
+    items[left].style.opacity = "0.5";
+    items[left].style.zIndex = "2";
+    items[left].style.transform = "translateX(-120%) scale(0.85)";
+
+    // 右边
+    items[right].style.opacity = "0.5";
+    items[right].style.zIndex = "2";
+    items[right].style.transform = "translateX(120%) scale(0.85)";
   }
 
-  function showSlide(index) {
-    if (index < 0) index = slides.length - 1;
-    if (index >= slides.length) index = 0;
-    currentIndex = index;
-    updateSlides();
+  function prevCover() {
+    current = (current - 1 + items.length) % items.length;
+    updateCoverflow();
   }
 
-  function prevSlide() { showSlide(currentIndex - 1); }
-  function nextSlide() { showSlide(currentIndex + 1); }
+  function nextCover() {
+    current = (current + 1) % items.length;
+    updateCoverflow();
+  }
 
   // 初始化
-  updateSlides();
+  updateCoverflow();
 </script>
-
-
-
-
-
 
 
 
