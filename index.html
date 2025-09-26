@@ -158,12 +158,12 @@
 
 <section class="section">
   <div class="container is-max-desktop">
-    <h2 class="title is-2 has-text-centered" style="margin-bottom: 2rem;">
+    <h2 class="title is-3 has-text-centered" style="margin-bottom: 1.5rem;">
       Token-level Consistency and Speedup Analysis
     </h2>
 
     <!-- Intro text -->
-    <div class="content has-text-justified" style="font-size: 1.1rem;">
+    <div class="content has-text-justified" style="font-size: 1rem;">
       <p>
         Speculative decoding has received considerable attention due to its potential for substantial speedups. However, its effectiveness critically depends on the <b>consistency between the small language model (SLM) and the large language model (LLM)</b>. We quantify this limitation using <i>token-level consistency</i>, defined as the percentage of tokens for which the SLM produces the same output as the LLM given an identical prefix.
       </p>
@@ -172,48 +172,48 @@
       </p>
     </div>
 
-    <!-- Custom Slider -->
-    <div class="slider-wrapper" style="position: relative; overflow: hidden; width: 100%; max-width: 800px; margin: 2rem auto;">
-      <div class="slider" style="display: flex; transition: transform 0.5s ease;">
+    <!-- Coverflow Slider -->
+    <div class="slider-wrapper" style="position: relative; overflow: hidden; width: 100%; max-width: 900px; margin: 2rem auto;">
+      <div class="slider" style="display: flex; transition: transform 0.6s ease; justify-content: center; align-items: center;">
 
         <!-- Slide 1 -->
-        <div class="slide" style="min-width: 100%; text-align: center;">
-          <img src="static/images/motivation_consistency_with_upperbound.png" alt="Token-level consistency vs. speedup" style="max-width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-          <p style="margin-top: 0.8rem; font-size: 0.95rem;"><b>(a)</b> Token-level consistency vs. speedup across LLMs.</p>
+        <div class="slide" style="flex: 0 0 70%; text-align: center; opacity: 0.5; transform: scale(0.85); transition: all 0.6s ease;">
+          <img src="static/images/motivation_consistency_with_upperbound.png" alt="Token-level consistency vs. speedup" style="max-width: 70%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+          <p style="margin-top: 0.6rem; font-size: 0.9rem;"><b>(a)</b> Token-level consistency vs. speedup across LLMs.</p>
         </div>
 
         <!-- Slide 2 -->
-        <div class="slide" style="min-width: 100%; text-align: center;">
-          <img src="static/images/speedup_distribution_filtered.png" alt="Speedup distribution" style="max-width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-          <p style="margin-top: 0.8rem; font-size: 0.95rem;"><b>(b)</b> Speedup distribution across AMC samples.</p>
+        <div class="slide" style="flex: 0 0 70%; text-align: center; opacity: 1; transform: scale(1); transition: all 0.6s ease;">
+          <img src="static/images/speedup_distribution_filtered.png" alt="Speedup distribution" style="max-width: 70%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+          <p style="margin-top: 0.6rem; font-size: 0.9rem;"><b>(b)</b> Speedup distribution across AMC samples.</p>
         </div>
 
         <!-- Slide 3 -->
-        <div class="slide" style="min-width: 100%; text-align: center;">
-          <img src="static/images/token_length_bars.png" alt="Token usage comparison" style="max-width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-          <p style="margin-top: 0.8rem; font-size: 0.95rem;"><b>(c)</b> Token usage by SLM vs. LLM on correct answers.</p>
+        <div class="slide" style="flex: 0 0 70%; text-align: center; opacity: 0.5; transform: scale(0.85); transition: all 0.6s ease;">
+          <img src="static/images/token_length_bars.png" alt="Token usage comparison" style="max-width: 70%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+          <p style="margin-top: 0.6rem; font-size: 0.9rem;"><b>(c)</b> Token usage by SLM vs. LLM on correct answers.</p>
         </div>
 
       </div>
 
       <!-- Navigation arrows -->
-      <button onclick="prevSlide()" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); background: rgba(255,255,255,0.8); border: none; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+      <button onclick="prevSlide()" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); background: rgba(255,255,255,0.85); border: none; border-radius: 50%; width: 36px; height: 36px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
         ◀
       </button>
-      <button onclick="nextSlide()" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); background: rgba(255,255,255,0.8); border: none; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+      <button onclick="nextSlide()" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); background: rgba(255,255,255,0.85); border: none; border-radius: 50%; width: 36px; height: 36px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
         ▶
       </button>
 
-      <!-- Dots navigation -->
+      <!-- Dots -->
       <div class="dots" style="text-align: center; margin-top: 1rem;">
-        <span class="dot" onclick="showSlide(0)" style="cursor:pointer; height: 12px; width: 12px; margin: 0 5px; background-color: #bbb; border-radius: 50%; display: inline-block;"></span>
-        <span class="dot" onclick="showSlide(1)" style="cursor:pointer; height: 12px; width: 12px; margin: 0 5px; background-color: #bbb; border-radius: 50%; display: inline-block;"></span>
-        <span class="dot" onclick="showSlide(2)" style="cursor:pointer; height: 12px; width: 12px; margin: 0 5px; background-color: #bbb; border-radius: 50%; display: inline-block;"></span>
+        <span class="dot" onclick="showSlide(0)" style="cursor:pointer; height: 10px; width: 10px; margin: 0 5px; background-color: #bbb; border-radius: 50%; display: inline-block;"></span>
+        <span class="dot" onclick="showSlide(1)" style="cursor:pointer; height: 10px; width: 10px; margin: 0 5px; background-color: #bbb; border-radius: 50%; display: inline-block;"></span>
+        <span class="dot" onclick="showSlide(2)" style="cursor:pointer; height: 10px; width: 10px; margin: 0 5px; background-color: #bbb; border-radius: 50%; display: inline-block;"></span>
       </div>
     </div>
 
     <!-- Caption -->
-    <div class="has-text-centered" style="margin-top: 2rem; font-size: 1rem; color: #555;">
+    <div class="has-text-centered" style="margin-top: 1.5rem; font-size: 0.95rem; color: #555;">
       <b>Figure 1.</b> Token-level consistency and speedup analysis.  
       (a) Consistency vs. speedup across model pairs.  
       (b) Distribution of speedup ratios across AMC samples.  
@@ -223,31 +223,42 @@
 </section>
 
 <script>
-  let currentIndex = 0;
+  let currentIndex = 1; // 默认第二张在中间
   const slides = document.querySelectorAll('.slide');
   const slider = document.querySelector('.slider');
   const dots = document.querySelectorAll('.dot');
+
+  function updateSlides() {
+    slides.forEach((slide, i) => {
+      if (i === currentIndex) {
+        slide.style.opacity = "1";
+        slide.style.transform = "scale(1)";
+      } else {
+        slide.style.opacity = "0.5";
+        slide.style.transform = "scale(0.85)";
+      }
+    });
+    dots.forEach((dot, i) => {
+      dot.style.backgroundColor = (i === currentIndex) ? '#333' : '#bbb';
+    });
+    // 平移居中当前 slide
+    slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+  }
 
   function showSlide(index) {
     if (index < 0) index = slides.length - 1;
     if (index >= slides.length) index = 0;
     currentIndex = index;
-    slider.style.transform = `translateX(-${index * 100}%)`;
-    updateDots();
+    updateSlides();
   }
 
   function prevSlide() { showSlide(currentIndex - 1); }
   function nextSlide() { showSlide(currentIndex + 1); }
 
-  function updateDots() {
-    dots.forEach((dot, i) => {
-      dot.style.backgroundColor = (i === currentIndex) ? '#333' : '#bbb';
-    });
-  }
-
   // 初始化
-  showSlide(0);
+  updateSlides();
 </script>
+
 
 
 
