@@ -268,11 +268,10 @@
 <style>
 .slide-token, .slide-entropy {
   position: absolute;
-  top: 50%; left: 50%;
+  top: 50%;
   width: 60%;
   transform: translate(-50%, -50%) scale(0.7);
   opacity: 0; 
-  width: 90%;
   transition: all 0.6s ease;
   text-align: center;
 }
@@ -321,6 +320,7 @@
 
 /* 左边图：挤到容器左边，只露右半部分 */
 .left {
+  left: 0;
   opacity: 0.6 !important;
   transform: translate(-125%, -50%) scale(0.85) !important;  
   z-index: 2;
@@ -328,6 +328,7 @@
 
 /* 右边图：挤到容器右边，只露左半部分 */
 .right {
+  right: 0;
   opacity: 0.6 !important;
   transform: translate(25%, -50%) scale(0.85) !important;   
   z-index: 2;
