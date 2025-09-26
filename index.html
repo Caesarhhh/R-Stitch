@@ -266,34 +266,39 @@
 
 
 <style>
-.slide-token, .slide-entropy {
-  position: absolute;
-  top: 50%; left: 50%;
-  width: 70%;
-  transform: translate(-50%, -50%) scale(0.7);
-  opacity: 0; transition: all 0.6s ease;
-  text-align: center;
+/* Token / Entropy wrapper 通用 */
+.slider-token-wrapper, 
+.slider-entropy-wrapper {
+  position: relative;
+  height: 480px;
+  overflow: hidden;   /* ✅ 限制视口，只显示一部分 */
+  margin-top: 2rem;
 }
 
-.slide-token img, .slide-entropy img {
-  max-width: 80%;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  display: block;
-  margin: 0 auto;
+/* 中间 slide */
+.slide-token.active, 
+.slide-entropy.active {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  z-index: 3;
 }
 
-.slide-token p, .slide-entropy p {
-  position: absolute;
-  bottom: -2.5rem;  /* 往下移出一些空间 */
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 0.9rem;
-  background: rgba(255,255,255,0.85);
-  padding: 0.2rem 0.6rem;
-  border-radius: 6px;
-  display: inline-block;
+/* 左边 slide：稍微推出去，只显示右半部分 */
+.slide-token.left, 
+.slide-entropy.left {
+  opacity: 0.6;
+  transform: translate(-160%, -50%) scale(0.85);  /* ✅ -160% 表示往左推出更多 */
+  z-index: 2;
 }
+
+/* 右边 slide：稍微推出去，只显示左半部分 */
+.slide-token.right, 
+.slide-entropy.right {
+  opacity: 0.6;
+  transform: translate(60%, -50%) scale(0.85);   /* ✅ 60% 表示往右推出更多 */
+  z-index: 2;
+}
+
 
 
 /* 核心三态 */
