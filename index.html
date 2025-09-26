@@ -266,61 +266,53 @@
 
 
 <style>
-/* 通用 wrapper：裁切左右超出 */
-.slider-token-wrapper, 
-.slider-entropy-wrapper {
-  position: relative;
-  height: 420px;      /* 高度略小一点，避免 caption 被挡 */
-  overflow: hidden;   /* ✅ 限制只显示容器内部 */
-  margin-top: 2rem;
+.slide-token, .slide-entropy {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 70%;
+  transform: translate(-50%, -50%) scale(0.7);
+  opacity: 0; 
+  transition: all 0.6s ease;
+  text-align: center;
 }
 
-/* 图片大小控制 */
-.slide-token img, 
-.slide-entropy img {
-  max-width: 80%;     /* ✅ 保持合适大小，不会爆炸 */
+.slide-token img, .slide-entropy img {
+  max-width: 80%;   /* ✅ 保持合适大小 */
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   display: block;
   margin: 0 auto;
 }
 
-/* Caption */
-.slide-token p, 
-.slide-entropy p {
-  margin-top: 0.5rem;
+.slide-token p, .slide-entropy p {
+  position: absolute;
+  bottom: -2.5rem;  /* ✅ 给 caption 足够空间 */
+  left: 50%;
+  transform: translateX(-50%);
   font-size: 0.9rem;
-  color: #444;
+  background: rgba(255,255,255,0.85);
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  display: inline-block;
 }
 
-/* 三个状态 */
-.slide-token.active, 
-.slide-entropy.active {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
-  z-index: 3;
+/* 三个状态：只改这里 */
+.active { 
+  opacity: 1 !important; 
+  transform: translate(-50%, -50%) scale(1) !important; 
+  z-index: 3; 
+}
+.left { 
+  opacity: 0.6 !important; 
+  transform: translate(-115%, -50%) scale(0.85) !important;  /* ✅ 往外推一点点 */
+  z-index: 2; 
+}
+.right { 
+  opacity: 0.6 !important; 
+  transform: translate(15%, -50%) scale(0.85) !important;   /* ✅ 往外推一点点 */
+  z-index: 2; 
 }
 
-.slide-token.left, 
-.slide-entropy.left {
-  opacity: 0.6;
-  transform: translate(-105%, -50%) scale(0.85);  /* ✅ 只探出一部分 */
-  z-index: 2;
-}
-
-.slide-token.right, 
-.slide-entropy.right {
-  opacity: 0.6;
-  transform: translate(5%, -50%) scale(0.85);     /* ✅ 只探出一部分 */
-  z-index: 2;
-}
-
-
-
-/* 核心三态 */
-.active { opacity: 1 !important; transform: translate(-50%, -50%) scale(1) !important; z-index: 3; }
-.left   { opacity: 0.6 !important; transform: translate(-125%, -50%) scale(0.85) !important; z-index: 2; }
-.right  { opacity: 0.6 !important; transform: translate(25%, -50%) scale(0.85) !important; z-index: 2; }
 
 /* 按钮修复点击穿透 */
 .slider-token-wrapper button,
