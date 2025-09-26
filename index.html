@@ -161,50 +161,30 @@
 
 <section class="section">
   <div class="container is-max-desktop">
-    <div class="section-title-line">
-      <span>Token-level Consistency and Speedup Analysis</span>
-    </div>
+    <h2 class="title is-3 has-text-centered" style="margin-bottom: 1.5rem; border: 2px solid #ddd; padding: 0.5rem 1rem; border-radius: 8px; display:inline-block;">
+      Token-level Consistency and Speedup Analysis
+    </h2>
 
-    <!-- Intro text -->
-    <div class="content has-text-justified" style="font-size: 1rem;">
-      <p>
-        Speculative decoding has received considerable attention due to its potential for substantial speedups. However, its effectiveness critically depends on the <b>consistency between the small language model (SLM) and the large language model (LLM)</b>. We quantify this limitation using <i>token-level consistency</i>, defined as the percentage of tokens for which the SLM produces the same output as the LLM given an identical prefix.
-      </p>
-      <p>
-        Figure&nbsp;1 illustrates three aspects: (a) consistency–speedup trade-offs across different model pairs, (b) distribution of speedups across AMC samples, and (c) token length comparison for correctly answered questions. The results highlight that speculative decoding may suffer overheads when agreement is low, and fails to exploit the concise reasoning of SLMs effectively.
-      </p>
-    </div>
-
-    <!-- Slider -->
-    <div class="slider-token-wrapper" style="position: relative; width: 100%; max-width: 900px; margin: 2rem auto; height: 500px; overflow: hidden;">
+    <div class="slider-token-wrapper" style="position: relative; height: 420px; overflow: hidden; margin-top: 2rem;">
+      <!-- Slide 1 -->
       <div class="slide-token">
         <img src="static/images/motivation_consistency_with_upperbound.png" alt="Token-level consistency vs. speedup">
         <p><b>(a)</b> Token-level consistency vs. speedup across LLMs.</p>
       </div>
+      <!-- Slide 2 -->
       <div class="slide-token">
         <img src="static/images/speedup_distribution_filtered.png" alt="Speedup distribution">
         <p><b>(b)</b> Speedup distribution across AMC samples.</p>
       </div>
+      <!-- Slide 3 -->
       <div class="slide-token">
         <img src="static/images/token_length_bars.png" alt="Token usage comparison">
-        <p><b>(c)</b> Token usage by SLM vs. LLM on correct answers.</p>
+        <p><b>(c)</b> Token usage by SLM vs. LLM.</p>
       </div>
 
-      <!-- Navigation arrows -->
-      <button onclick="prevSlideToken()" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; border-radius: 50%; width: 36px; height: 36px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.2); z-index: 10;">
-        ◀
-      </button>
-      <button onclick="nextSlideToken()" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; border-radius: 50%; width: 36px; height: 36px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.2); z-index: 10;">
-        ▶
-      </button>
-    </div>
-
-    <!-- Caption -->
-    <div class="has-text-centered" style="margin-top: 1.5rem; font-size: 0.95rem; color: #555;">
-      <b>Figure 1.</b> Token-level consistency and speedup analysis.  
-      (a) Consistency vs. speedup across model pairs.  
-      (b) Distribution of speedup ratios across AMC samples.  
-      (c) Token usage comparison between SLM and LLM on correct answers.
+      <!-- Nav -->
+      <button onclick="prevSlideToken()" style="position:absolute; top:50%; left:10px;">◀</button>
+      <button onclick="nextSlideToken()" style="position:absolute; top:50%; right:10px;">▶</button>
     </div>
   </div>
 </section>
@@ -212,129 +192,88 @@
 
 <section class="section">
   <div class="container is-max-desktop">
-    <div class="section-title-line">
-      <span>Empirical Entropy Analysis</span>
-    </div>
+    <h2 class="title is-3 has-text-centered" style="margin-bottom: 1.5rem; border: 2px solid #ddd; padding: 0.5rem 1rem; border-radius: 8px; display:inline-block;">
+      Empirical Entropy Analysis
+    </h2>
 
-    <!-- Intro text -->
-    <div class="content has-text-justified" style="font-size: 1rem;">
-      <p>
-        Large language models (LLMs) exhibit stronger reasoning capabilities but incur substantially higher inference costs compared to small language models (SLMs). To understand when SLM predictions can be trusted without compromising correctness, we conduct sample- and token-level entropy analyses on AMC using DeepSeek-R1-Distill-Qwen-7B (LLM) and L1-1.5B-Short (SLM).
-      </p>
-      <ul>
-        <li><b>(1)</b> Incorrect answers are associated with <i>higher entropy</i>.</li>
-        <li><b>(2)</b> Most tokens have <i>extremely low entropy</i>, leaving only a small high-entropy fraction.</li>
-        <li><b>(3)</b> High-entropy tokens are more likely to <i>trigger errors</i>.</li>
-      </ul>
-    </div>
-
-    <!-- Slider -->
-    <div class="slider-entropy-wrapper" style="position: relative; width: 100%; max-width: 900px; margin: 2rem auto; height: 500px; overflow: hidden;">
+    <div class="slider-entropy-wrapper" style="position: relative; height: 420px; overflow: hidden; margin-top: 2rem;">
+      <!-- Slide 1 -->
       <div class="slide-entropy">
-        <img src="static/images/motivation/entropy_amc.png" alt="Sample-level entropy">
-        <p><b>(a)</b> Incorrect solutions exhibit higher entropy than correct ones.</p>
+        <img src="static/images/motivation/entropy_amc.png" alt="Entropy AMC">
+        <p><b>(a)</b> Sample-level entropy in correct vs. incorrect solutions.</p>
       </div>
+      <!-- Slide 2 -->
       <div class="slide-entropy">
-        <img src="static/images/motivation/token_entropys.png" alt="Token-level entropy distribution">
-        <p><b>(b)</b> The entropy distribution is skewed toward zero; most tokens have near-zero entropy.</p>
+        <img src="static/images/motivation/token_entropys.png" alt="Token entropy distribution">
+        <p><b>(b)</b> Token-level entropy distribution across traces.</p>
       </div>
+      <!-- Slide 3 -->
       <div class="slide-entropy">
-        <img src="static/images/motivation/entropy_neighborhood.png" alt="Entropy around harmful tokens">
-        <p><b>(c)</b> Context around harmful tokens shows elevated entropy, signaling error-prone regions.</p>
+        <img src="static/images/motivation/entropy_neighborhood.png" alt="Entropy neighborhood">
+        <p><b>(c)</b> Elevated entropy around first harmful token.</p>
       </div>
 
-      <!-- Navigation arrows -->
-      <button onclick="prevSlideEntropy()" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; border-radius: 50%; width: 36px; height: 36px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.2); z-index: 10;">
-        ◀
-      </button>
-      <button onclick="nextSlideEntropy()" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; border-radius: 50%; width: 36px; height: 36px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.2); z-index: 10;">
-        ▶
-      </button>
-    </div>
-
-    <!-- Caption -->
-    <div class="has-text-centered" style="margin-top: 1.5rem; font-size: 0.95rem; color: #555;">
-      <b>Figure 2.</b> Entropy and error locality.  
-      (a) Incorrect solutions exhibit higher entropy.  
-      (b) Distribution is skewed toward zero; most tokens have near-zero entropy.  
-      (c) Harmful token neighborhoods show elevated entropy.
+      <!-- Nav -->
+      <button onclick="prevSlideEntropy()" style="position:absolute; top:50%; left:10px;">◀</button>
+      <button onclick="nextSlideEntropy()" style="position:absolute; top:50%; right:10px;">▶</button>
     </div>
   </div>
 </section>
 
 
 <style>
-  .section-title-line {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.5rem;
-  }
-  .section-title-line span {
-    font-size: 1.6rem;
-    font-weight: 700;
-    padding: 0 1rem;
-    text-align: center;
-  }
-  .section-title-line::before,
-  .section-title-line::after {
-    content: "";
-    flex: 1;
-    height: 2px;
-    background: #ccc;
-  }
-  .section-title-line::before { margin-right: 1rem; }
-  .section-title-line::after { margin-left: 1rem; }
-
-  /* slider 通用样式 */
   .slide-token, .slide-entropy {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 50%; left: 50%;
     width: 70%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    transform: translate(-50%, -50%) scale(0.7);
     text-align: center;
-    transition: all 0.6s ease;
-    opacity: 0;
-    z-index: 0;
+    transform: translate(-50%, -50%) scale(0.7);
+    opacity: 0; transition: all 0.6s ease;
   }
   .slide-token img, .slide-entropy img {
     max-width: 80%;
-    height: auto;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   }
   .slide-token p, .slide-entropy p {
-    margin-top: 0.6rem;
-    font-size: 0.9rem;
-    background: rgba(255,255,255,0.8);
-    padding: 0.2rem 0.4rem;
-    border-radius: 6px;
+    margin-top: 0.6rem; font-size: 0.9rem;
+    background: rgba(255,255,255,0.85);
+    padding: 0.2rem 0.4rem; border-radius: 6px;
     display: inline-block;
   }
-  .slide-token.active, .slide-entropy.active {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-    z-index: 3;
-  }
-  .slide-token.left, .slide-entropy.left {
-    opacity: 0.6;
-    transform: translate(-125%, -50%) scale(0.85);
-    z-index: 2;
-  }
-  .slide-token.right, .slide-entropy.right {
-    opacity: 0.6;
-    transform: translate(25%, -50%) scale(0.85);
-    z-index: 2;
-  }
+  /* 核心三态 */
+  .active { opacity: 1 !important; transform: translate(-50%, -50%) scale(1) !important; z-index: 3; }
+  .left   { opacity: 0.6 !important; transform: translate(-125%, -50%) scale(0.85) !important; z-index: 2; }
+  .right  { opacity: 0.6 !important; transform: translate(25%, -50%) scale(0.85) !important; z-index: 2; }
 </style>
 
 
+<script>
+  function initSlider(wrapperSelector, slideSelector, prevFnName, nextFnName) {
+    let currentIndex = 0;
+    const slides = document.querySelectorAll(slideSelector);
+    if (!slides.length) return;
 
+    function updateSlides() {
+      slides.forEach((s,i)=>{
+        s.classList.remove("active","left","right");
+        if(i===currentIndex) s.classList.add("active");
+        else if(i===(currentIndex-1+slides.length)%slides.length) s.classList.add("left");
+        else if(i===(currentIndex+1)%slides.length) s.classList.add("right");
+      });
+    }
+
+    window[prevFnName] = ()=>{ currentIndex=(currentIndex-1+slides.length)%slides.length; updateSlides(); }
+    window[nextFnName] = ()=>{ currentIndex=(currentIndex+1)%slides.length; updateSlides(); }
+
+    updateSlides(); // 初始化
+  }
+
+  window.addEventListener("load", ()=>{
+    initSlider(".slider-token-wrapper",".slide-token","prevSlideToken","nextSlideToken");
+    initSlider(".slider-entropy-wrapper",".slide-entropy","prevSlideEntropy","nextSlideEntropy");
+  });
+</script>
 
 
 <!-- Video carousel -->
