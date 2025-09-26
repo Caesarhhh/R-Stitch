@@ -156,8 +156,6 @@
 </section>
 
 
-<!-- End image carousel -->
-<!-- Video carousel -->
 <section class="section">
   <div class="container is-max-desktop">
     <h2 class="title is-2 has-text-centered" style="margin-bottom: 2rem;">
@@ -174,62 +172,43 @@
       </p>
     </div>
 
-    <!-- Carousel -->
-    <div class="carousel carousel-animated carousel-animate-slide" data-autoplay="false" data-items="1"  style="margin-top: 2rem;">
-      <div class="carousel-container">
+    <!-- Custom Slider -->
+    <div class="slider-wrapper" style="position: relative; overflow: hidden; width: 100%; max-width: 800px; margin: 2rem auto;">
+      <div class="slider" style="display: flex; transition: transform 0.5s ease;">
 
         <!-- Slide 1 -->
-        <div class="carousel-item has-background is-active">
-          <div class="card" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
-            <div class="card-image">
-              <figure class="image is-4by3">
-                <img src="static/images/motivation_consistency_with_upperbound.png" alt="Token-level consistency vs. speedup">
-              </figure>
-            </div>
-            <div class="card-content has-text-centered" style="font-size: 0.95rem;">
-              <b>(a)</b> Token-level consistency vs. speedup across LLMs.
-            </div>
-          </div>
+        <div class="slide" style="min-width: 100%; text-align: center;">
+          <img src="static/images/motivation_consistency_with_upperbound.png" alt="Token-level consistency vs. speedup" style="max-width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+          <p style="margin-top: 0.8rem; font-size: 0.95rem;"><b>(a)</b> Token-level consistency vs. speedup across LLMs.</p>
         </div>
 
         <!-- Slide 2 -->
-        <div class="carousel-item has-background">
-          <div class="card" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
-            <div class="card-image">
-              <figure class="image is-4by3">
-                <img src="static/images/speedup_distribution_filtered.png" alt="Speedup distribution">
-              </figure>
-            </div>
-            <div class="card-content has-text-centered" style="font-size: 0.95rem;">
-              <b>(b)</b> Speedup distribution across AMC samples.
-            </div>
-          </div>
+        <div class="slide" style="min-width: 100%; text-align: center;">
+          <img src="static/images/speedup_distribution_filtered.png" alt="Speedup distribution" style="max-width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+          <p style="margin-top: 0.8rem; font-size: 0.95rem;"><b>(b)</b> Speedup distribution across AMC samples.</p>
         </div>
 
         <!-- Slide 3 -->
-        <div class="carousel-item has-background">
-          <div class="card" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
-            <div class="card-image">
-              <figure class="image is-4by3">
-                <img src="static/images/token_length_bars.png" alt="Token usage comparison">
-              </figure>
-            </div>
-            <div class="card-content has-text-centered" style="font-size: 0.95rem;">
-              <b>(c)</b> Token usage by SLM vs. LLM on correct answers.
-            </div>
-          </div>
+        <div class="slide" style="min-width: 100%; text-align: center;">
+          <img src="static/images/token_length_bars.png" alt="Token usage comparison" style="max-width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+          <p style="margin-top: 0.8rem; font-size: 0.95rem;"><b>(c)</b> Token usage by SLM vs. LLM on correct answers.</p>
         </div>
 
       </div>
 
-      <!-- Navigation -->
-      <div class="carousel-navigation is-overlay">
-        <div class="carousel-nav-left">
-          <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        </div>
-        <div class="carousel-nav-right">
-          <i class="fa fa-chevron-right" aria-hidden="true"></i>
-        </div>
+      <!-- Navigation arrows -->
+      <button onclick="prevSlide()" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); background: rgba(255,255,255,0.8); border: none; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+        ◀
+      </button>
+      <button onclick="nextSlide()" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); background: rgba(255,255,255,0.8); border: none; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+        ▶
+      </button>
+
+      <!-- Dots navigation -->
+      <div class="dots" style="text-align: center; margin-top: 1rem;">
+        <span class="dot" onclick="showSlide(0)" style="cursor:pointer; height: 12px; width: 12px; margin: 0 5px; background-color: #bbb; border-radius: 50%; display: inline-block;"></span>
+        <span class="dot" onclick="showSlide(1)" style="cursor:pointer; height: 12px; width: 12px; margin: 0 5px; background-color: #bbb; border-radius: 50%; display: inline-block;"></span>
+        <span class="dot" onclick="showSlide(2)" style="cursor:pointer; height: 12px; width: 12px; margin: 0 5px; background-color: #bbb; border-radius: 50%; display: inline-block;"></span>
       </div>
     </div>
 
@@ -242,6 +221,34 @@
     </div>
   </div>
 </section>
+
+<script>
+  let currentIndex = 0;
+  const slides = document.querySelectorAll('.slide');
+  const slider = document.querySelector('.slider');
+  const dots = document.querySelectorAll('.dot');
+
+  function showSlide(index) {
+    if (index < 0) index = slides.length - 1;
+    if (index >= slides.length) index = 0;
+    currentIndex = index;
+    slider.style.transform = `translateX(-${index * 100}%)`;
+    updateDots();
+  }
+
+  function prevSlide() { showSlide(currentIndex - 1); }
+  function nextSlide() { showSlide(currentIndex + 1); }
+
+  function updateDots() {
+    dots.forEach((dot, i) => {
+      dot.style.backgroundColor = (i === currentIndex) ? '#333' : '#bbb';
+    });
+  }
+
+  // 初始化
+  showSlide(0);
+</script>
+
 
 
 
