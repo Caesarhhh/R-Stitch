@@ -215,57 +215,53 @@
       Empirical Entropy Analysis
     </h2>
 
-    <!-- 分析文字 -->
+    <!-- 精简文字 -->
     <div class="content has-text-justified" style="font-size: 1rem; margin-bottom: 1.5rem;">
       <p>
-        LLMs exhibit stronger reasoning capabilities but incur substantially higher inference costs compared to SLMs. 
-        Prior work shows that when the two models produce consistent outputs, delegating computation to the SLM can 
-        effectively reduce latency. This raises a fundamental question: under what conditions can SLM predictions 
-        be relied upon without compromising correctness? To answer this, we conduct sample- and token-level entropy 
-        analyses on AMC using DeepSeek-R1-Distill-Qwen-7B (LLM) and L1-1.5B-Short (SLM), which reveal systematic patterns of entropy.
+        We analyze entropy patterns on AMC using DeepSeek-R1-Distill-Qwen-7B (LLM) and L1-1.5B-Short (SLM), 
+        revealing three key observations:
       </p>
-
-      <p><b>1. Incorrect answers are associated with higher entropy.</b><br>
-        On AMC, the mean entropy over all generated tokens in incorrect reasoning traces is higher than that in correct traces (Figure&nbsp;2a). 
-        In the violin plots, the width of each curve indicates the proportion of tokens within an entropy range. 
-        <i>Traces with higher average entropy are more likely to lead to incorrect answers, supporting the use of entropy as a practical uncertainty signal.</i>
+      <p><b>1. Incorrect answers show higher entropy.</b>  
+        Reasoning traces leading to wrong answers have significantly higher mean entropy (Figure&nbsp;2a).
       </p>
-
-      <p><b>2. Most tokens are generated with extremely low entropy.</b><br>
-        As shown in Figure&nbsp;2b, the distribution is heavily skewed toward zero: only 10.65% of SLM-generated tokens exceed an entropy of 0.1, 
-        and the majority have entropy exactly 0, indicating very high prediction confidence. 
-        <i>High-entropy tokens are relatively rare within a sequence.</i>
+      <p><b>2. Most tokens are near-deterministic.</b>  
+        Over 89% of SLM tokens have entropy ≤ 0.1, indicating high prediction confidence (Figure&nbsp;2b).
       </p>
-
-      <p><b>3. High-entropy tokens are more likely to trigger errors.</b><br>
-        We analyze AMC problems where the LLM produces the correct solution but the SLM does not. 
-        As shown in Figure&nbsp;2c, the neighborhood preceding the first harmful token exhibits higher mean entropy 
-        than the overall distribution. 
-        <i>High-entropy tokens are more likely to precede and trigger harmful tokens, making them useful signals for routing.</i>
+      <p><b>3. High-entropy tokens trigger errors.</b>  
+        Harmful tokens are often preceded by locally elevated entropy, making entropy a useful routing signal (Figure&nbsp;2c).
       </p>
     </div>
 
     <!-- Slider -->
-    <div class="slider-entropy-wrapper" style="position: relative; height: 480px; overflow: visible; margin-top: 2rem;">
+    <div class="slider-entropy-wrapper" style="position: relative; height: 460px; overflow: visible; margin-top: 2rem;">
       <div class="slide-entropy">
         <img src="static/images/motivation/entropy_amc.png" alt="Entropy AMC">
-        <p><b>(a)</b> Sample-level entropy in correct vs. incorrect solutions.</p>
+        <p><b>(a)</b> Higher entropy in incorrect solutions.</p>
       </div>
       <div class="slide-entropy">
         <img src="static/images/motivation/token_entropys.png" alt="Token entropy distribution">
-        <p><b>(b)</b> Token-level entropy distribution across traces.</p>
+        <p><b>(b)</b> Most tokens are near-zero entropy.</p>
       </div>
       <div class="slide-entropy">
         <img src="static/images/motivation/entropy_neighborhood.png" alt="Entropy neighborhood">
-        <p><b>(c)</b> Elevated entropy around first harmful token.</p>
+        <p><b>(c)</b> Elevated entropy before harmful tokens.</p>
       </div>
 
       <!-- Nav -->
       <button onclick="prevSlideEntropy()">◀</button>
       <button onclick="nextSlideEntropy()">▶</button>
     </div>
+
+    <!-- Figure caption -->
+    <div class="has-text-centered" style="margin-top: 1.5rem; font-size: 0.95rem; color: #555;">
+      <b>Figure 2.</b> Entropy and error locality.  
+      (a) Incorrect solutions show higher entropy.  
+      (b) Most tokens have near-zero entropy.  
+      (c) Harmful tokens are preceded by high-entropy regions.
+    </div>
   </div>
 </section>
+
 
 
 
