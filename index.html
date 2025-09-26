@@ -47,6 +47,68 @@
 <body>
 
 
+  <!-- 🚀 Fancy Right Sidebar Navigation -->
+<aside id="sidebar-nav"
+style="position: fixed; top: 100px; right: 40px; width: 220px; background: #fff;
+       border: 1px solid #eee; border-radius: 12px; padding: 1rem;
+       box-shadow: 0 4px 12px rgba(0,0,0,0.08); font-size: 0.95rem;">
+
+<p style="font-weight: 600; font-size: 1rem; margin-bottom: 0.5rem;">📑 Navigation</p>
+<ul style="list-style: none; margin: 0; padding: 0;">
+  <li><a href="#abstract" class="nav-link">Abstract</a></li>
+  <li><a href="#consistency" class="nav-link">Token-level Consistency</a></li>
+  <li><a href="#entropy" class="nav-link">Entropy Analysis</a></li>
+  <li><a href="#method" class="nav-link">Methodology</a></li>
+  <li><a href="#performance" class="nav-link">Performance</a></li>
+</ul>
+</aside>
+
+<style>
+html { scroll-behavior: smooth; }
+
+#sidebar-nav .nav-link {
+  display: block;
+  padding: 0.4rem 0.6rem;
+  color: #333;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+#sidebar-nav .nav-link:hover {
+  background: #f2f2f2;
+}
+
+#sidebar-nav .nav-link.active {
+  background: #333;
+  color: #fff;
+  font-weight: 600;
+}
+</style>
+
+<script>
+// 自动高亮当前 section
+const sections = document.querySelectorAll("section[id]");
+const navLinks = document.querySelectorAll("#sidebar-nav .nav-link");
+
+window.addEventListener("scroll", () => {
+  let current = "";
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 100;
+    if (scrollY >= sectionTop) {
+      current = section.getAttribute("id");
+    }
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove("active");
+    if (link.getAttribute("href") === "#" + current) {
+      link.classList.add("active");
+    }
+  });
+});
+</script>
+
 
 
 
@@ -157,7 +219,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
-          <h2 class="title is-3">Abstract</h2>
+          <h2 class="title is-3" id="abstract">Abstract</h2>
           <div class="content has-text-justified">
             <p>
               Chain-of-thought (CoT) enhances the problem-solving ability of large language models (LLMs) but incurs
@@ -188,7 +250,7 @@
 
   <section class="section">
     <div class="container is-max-desktop">
-      <h2 class="title is-3 has-text-centered"
+      <h2 class="title is-3 has-text-centered" id="consistency"
         style="margin-bottom: 1.5rem; border: 2px solid #ddd; padding: 0.5rem 1rem; border-radius: 8px; display:inline-block;">
         Token-level Consistency and Speedup Analysis
       </h2>
@@ -236,7 +298,7 @@
 
   <section class="section is-light">
     <div class="container is-max-desktop">
-      <h2 class="title is-3 has-text-centered"
+      <h2 class="title is-3 has-text-centered" id="entropy"
         style="margin-bottom: 1.5rem; border: 2px solid #ddd; padding: 0.5rem 1rem; border-radius: 8px; display:inline-block;">
         Empirical Entropy Analysis
       </h2>
@@ -444,7 +506,7 @@
   <!-- ========== R-Stitch Methodology (self-contained, scoped) ========== -->
   <section id="rstitch-method" class="section">
     <div class="container is-max-desktop">
-      <h2 class="title is-3 has-text-centered"
+      <h2 class="title is-3 has-text-centered" id="method"
         style="margin-bottom: 0rem; border: 2px solid #ddd; padding: 0.45rem 0.9rem; border-radius: 8px; display:inline-block;">
         Methodology
       </h2>
@@ -695,7 +757,7 @@
 
 <section class="section is-light">
   <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered"
+    <h2 class="title is-3 has-text-centered" id="performance"
         style="margin-bottom: 1.5rem; border: 2px solid #ddd; padding: 0.5rem 1rem; border-radius: 8px; display:inline-block;">
       Performance on Math Reasoning Benchmarks
     </h2>
