@@ -222,29 +222,43 @@
 
 
 <style>
-  .slide-token, .slide-entropy {
-    position: absolute;
-    top: 50%; left: 50%;
-    width: 70%;
-    text-align: center;
-    transform: translate(-50%, -50%) scale(0.7);
-    opacity: 0; transition: all 0.6s ease;
-  }
-  .slide-token img, .slide-entropy img {
-    max-width: 80%;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  }
-  .slide-token p, .slide-entropy p {
-    margin-top: 0.6rem; font-size: 0.9rem;
-    background: rgba(255,255,255,0.85);
-    padding: 0.2rem 0.4rem; border-radius: 6px;
-    display: inline-block;
-  }
-  /* 核心三态 */
-  .active { opacity: 1 !important; transform: translate(-50%, -50%) scale(1) !important; z-index: 3; }
-  .left   { opacity: 0.6 !important; transform: translate(-125%, -50%) scale(0.85) !important; z-index: 2; }
-  .right  { opacity: 0.6 !important; transform: translate(25%, -50%) scale(0.85) !important; z-index: 2; }
+.slide-token, .slide-entropy {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translate(-50%, -50%) scale(0.7);
+  opacity: 0; transition: all 0.6s ease;
+}
+
+.slide-token img, .slide-entropy img {
+  max-width: 80%;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.slide-token p, .slide-entropy p {
+  margin-top: 0.6rem;
+  font-size: 0.9rem;
+  background: rgba(255,255,255,0.85);
+  padding: 0.2rem 0.4rem;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+/* 核心三态 */
+.active { opacity: 1 !important; transform: translate(-50%, -50%) scale(1) !important; z-index: 3; }
+.left   { opacity: 0.6 !important; transform: translate(-125%, -50%) scale(0.85) !important; z-index: 2; }
+.right  { opacity: 0.6 !important; transform: translate(25%, -50%) scale(0.85) !important; z-index: 2; }
+
+/* 按钮修复点击穿透 */
+.slider-token-wrapper button,
+.slider-entropy-wrapper button {
+  z-index: 10;
+}
+
 </style>
 
 
