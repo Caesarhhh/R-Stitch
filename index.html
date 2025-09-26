@@ -370,35 +370,6 @@
 </style>
 
 
-<script>
-  function initSlider(wrapperSelector, slideSelector, prevFnName, nextFnName) {
-    let currentIndex = 0;
-    const slides = document.querySelectorAll(slideSelector);
-    if (!slides.length) return;
-
-    function updateSlides() {
-      slides.forEach((s,i)=>{
-        s.classList.remove("active","left","right");
-        if(i===currentIndex) s.classList.add("active");
-        else if(i===(currentIndex-1+slides.length)%slides.length) s.classList.add("left");
-        else if(i===(currentIndex+1)%slides.length) s.classList.add("right");
-      });
-    }
-
-    window[prevFnName] = ()=>{ currentIndex=(currentIndex-1+slides.length)%slides.length; updateSlides(); }
-    window[nextFnName] = ()=>{ currentIndex=(currentIndex+1)%slides.length; updateSlides(); }
-
-    updateSlides(); // 初始化
-  }
-
-  window.addEventListener("load", ()=>{
-    initSlider(".slider-token-wrapper",".slide-token","prevSlideToken","nextSlideToken");
-    initSlider(".slider-entropy-wrapper",".slide-entropy","prevSlideEntropy","nextSlideEntropy");
-  });
-</script>
-
-
-<!-- Video carousel -->
 <section class="section">
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered"
@@ -408,89 +379,76 @@
 
     <!-- 总览图 -->
     <figure class="has-text-centered" style="margin-bottom: 2rem;">
-      <img src="static/images/cot_methodv2.png" alt="R-Stitch Overview" style="max-width: 85%; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.12);">
+      <img src="static/images/cot_methodv2.png" alt="R-Stitch Overview" 
+           style="max-width: 85%; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.12);">
       <figcaption style="font-size: 0.9rem; margin-top: 0.5rem; color: #555;">
         Figure X. Overview of R-Stitch: entropy-guided switching between SLM and LLM.
       </figcaption>
     </figure>
 
-    <!-- Slider -->
-    <div class="slider-method-wrapper" style="position: relative; height: 320px; overflow: hidden; margin-top: 1rem;">
-      
-      <!-- Card 1 -->
-      <div class="slide-method">
-        <div class="card" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.12); height: 100%;">
-          <div class="card-content has-text-justified" style="font-size: 1rem;">
+    <!-- 卡片轮播 -->
+    <div class="method-slider" style="position: relative; max-width: 800px; margin: 0 auto;">
+      <div class="method-slide active">
+        <div class="card" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.12);">
+          <div class="card-content has-text-justified">
             <h3 class="title is-5 has-text-centered">R-Stitch: Entropy-Guided Decoding</h3>
             <p>
-              <b>R-Stitch</b> dynamically switches between the SLM and LLM:  
-              low-entropy tokens are accepted from the SLM to reduce latency, while 
-              high-entropy tokens trigger the LLM for reliable decoding. Control 
-              can return to the SLM when uncertainty decreases, enabling 
-              <b>bidirectional collaboration</b>.
+              <b>R-Stitch</b> switches between the SLM and LLM dynamically:
+              low-entropy tokens are accepted from the SLM to reduce latency, 
+              while high-entropy tokens trigger the LLM for reliable decoding. 
+              This enables <b>bidirectional collaboration</b>.
             </p>
           </div>
         </div>
       </div>
 
-      <!-- Card 2 -->
-      <div class="slide-method">
-        <div class="card" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.12); height: 100%;">
-          <div class="card-content has-text-justified" style="font-size: 1rem;">
+      <div class="method-slide">
+        <div class="card" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.12);">
+          <div class="card-content has-text-justified">
             <h3 class="title is-5 has-text-centered">R-Stitch<sup>+</sup>: Adaptive Routing</h3>
             <p>
-              <b>R-Stitch<sup>+</sup></b> extends R-Stitch with a lightweight RL router.  
-              It adapts switching decisions beyond fixed entropy thresholds, balancing 
-              <b>accuracy</b> and <b>latency</b> via a latency-aware reward. This enables 
-              <b>adaptive efficiency–accuracy trade-offs</b> without retraining.
+              <b>R-Stitch<sup>+</sup></b> extends R-Stitch with a lightweight RL router. 
+              It adapts switching decisions beyond fixed thresholds, 
+              balancing <b>accuracy</b> and <b>latency</b> 
+              via a latency-aware reward.
             </p>
           </div>
         </div>
       </div>
 
-      <!-- Card 3 -->
-      <div class="slide-method">
-        <div class="card" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.12); height: 100%;">
-          <div class="card-content has-text-centered" style="font-size: 1rem;">
+      <div class="method-slide">
+        <div class="card" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.12); text-align:center;">
+          <div class="card-content">
             <h3 class="title is-5">Algorithm Flow</h3>
-            <img src="static/images/rstitch_algo.png" alt="R-Stitch Algorithm" style="max-width: 70%; border-radius: 8px; margin-top: 1rem;">
+            <img src="static/images/rstitch_algo.png" alt="R-Stitch Algorithm Flow" 
+                 style="max-width: 70%; border-radius: 8px; margin-top: 1rem;">
             <p style="font-size: 0.9rem; margin-top: 0.5rem; color: #555;">
-              Figure Y. Algorithm of the proposed method.
+              Figure Y. Flowchart of the proposed R-Stitch algorithm.
             </p>
           </div>
         </div>
       </div>
 
-      <!-- Nav -->
-      <button onclick="prevSlideMethod()">◀</button>
-      <button onclick="nextSlideMethod()">▶</button>
+      <!-- 按钮 -->
+      <button class="method-prev">◀</button>
+      <button class="method-next">▶</button>
     </div>
   </div>
 </section>
 
-
 <style>
-/* Methodology slider */
-.slider-method-wrapper {
+.method-slider {
   position: relative;
-  height: 320px;
-  overflow: hidden;
 }
-.slide-method {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  transition: opacity 0.6s ease;
+.method-slide {
+  display: none;
 }
-.slide-method.active {
-  opacity: 1;
-  z-index: 2;
+.method-slide.active {
+  display: block;
 }
 
-/* Nav buttons */
-.slider-method-wrapper button {
+/* 按钮 */
+.method-slider button {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -502,32 +460,28 @@
   font-size: 18px;
   cursor: pointer;
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  z-index: 5;
 }
-.slider-method-wrapper button:first-of-type { left: 10px; }
-.slider-method-wrapper button:last-of-type { right: 10px; }
+.method-prev { left: -50px; }
+.method-next { right: -50px; }
 </style>
 
-
 <script>
-let currentMethodIndex = 0;
-const methodSlides = document.querySelectorAll('.slide-method');
+let methodIndex = 0;
+const methodSlides = document.querySelectorAll('.method-slide');
 
-function showMethodSlide(index) {
-  if (index < 0) index = methodSlides.length - 1;
-  if (index >= methodSlides.length) index = 0;
-  methodSlides.forEach((slide, i) => {
-    slide.classList.toggle('active', i === index);
-  });
-  currentMethodIndex = index;
+function showMethodSlide(n) {
+  methodSlides.forEach((s, i) => s.classList.toggle('active', i === n));
+  methodIndex = n;
 }
-
-function prevSlideMethod() { showMethodSlide(currentMethodIndex - 1); }
-function nextSlideMethod() { showMethodSlide(currentMethodIndex + 1); }
-
-// 初始化
+document.querySelector('.method-prev').onclick = () => {
+  showMethodSlide((methodIndex - 1 + methodSlides.length) % methodSlides.length);
+};
+document.querySelector('.method-next').onclick = () => {
+  showMethodSlide((methodIndex + 1) % methodSlides.length);
+};
 showMethodSlide(0);
 </script>
+
 
 <!-- End video carousel -->
 
