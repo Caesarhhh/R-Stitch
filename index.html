@@ -266,16 +266,34 @@
 
 
 <style>
-/* Token / Entropy wrapper 通用 */
+/* 通用 wrapper：裁切左右超出 */
 .slider-token-wrapper, 
 .slider-entropy-wrapper {
   position: relative;
-  height: 480px;
-  overflow: hidden;   /* ✅ 限制视口，只显示一部分 */
+  height: 420px;      /* 高度略小一点，避免 caption 被挡 */
+  overflow: hidden;   /* ✅ 限制只显示容器内部 */
   margin-top: 2rem;
 }
 
-/* 中间 slide */
+/* 图片大小控制 */
+.slide-token img, 
+.slide-entropy img {
+  max-width: 80%;     /* ✅ 保持合适大小，不会爆炸 */
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  display: block;
+  margin: 0 auto;
+}
+
+/* Caption */
+.slide-token p, 
+.slide-entropy p {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+/* 三个状态 */
 .slide-token.active, 
 .slide-entropy.active {
   opacity: 1;
@@ -283,19 +301,17 @@
   z-index: 3;
 }
 
-/* 左边 slide：稍微推出去，只显示右半部分 */
 .slide-token.left, 
 .slide-entropy.left {
   opacity: 0.6;
-  transform: translate(-160%, -50%) scale(0.85);  /* ✅ -160% 表示往左推出更多 */
+  transform: translate(-105%, -50%) scale(0.85);  /* ✅ 只探出一部分 */
   z-index: 2;
 }
 
-/* 右边 slide：稍微推出去，只显示左半部分 */
 .slide-token.right, 
 .slide-entropy.right {
   opacity: 0.6;
-  transform: translate(60%, -50%) scale(0.85);   /* ✅ 60% 表示往右推出更多 */
+  transform: translate(5%, -50%) scale(0.85);     /* ✅ 只探出一部分 */
   z-index: 2;
 }
 
